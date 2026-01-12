@@ -1,0 +1,40 @@
+@import 'tailwindcss';
+
+@theme {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-pop: var(--pop);
+  --color-pop-foreground: var(--pop-foreground);
+}
+
+:root {
+  --background: #eeeeee;
+  --foreground: #2a515f;
+  --primary: #326273;
+  --primary-foreground: #fff;
+  --secondary: #e1e0e0;
+  --secondary-foreground: #326273;
+  --pop: #e39774;
+  --pop-foreground: #fff;
+
+  --myWidth: 80%;
+}
+
+.dark {
+  --background: #02171e;
+  --foreground: #eeeeee;
+  --primary: #326273;
+  --primary-foreground: #02171e;
+  --secondary: #1a3d47;
+  --secondary-foreground: #eeeeee;
+  --pop: #e39774;
+  --pop-foreground: #2a515f;
+}
+
+
+
+
