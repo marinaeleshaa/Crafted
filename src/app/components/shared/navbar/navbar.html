@@ -1,28 +1,37 @@
-<nav class="bg-primary text-primary-foreground shadow-md py-3">
+<nav class=" text-primary fixed w-full py-2">
   <div class="flex justify-between items-center w-(--myWidth) mx-auto">
-    <!-- Logo -->
-    <a routerLink="/" class="text-lg font-bold capitalize">crafted</a>
+    <div class="flex items-center gap-6">
+      <!-- Logo -->
+      <div class="flex items-center gap-6">
+        <div class="relative">
+          <a routerLink="/" class="text-xl font-bold capitalize myTransition"> crafted </a>
+        </div>
+        <!-- Creative separator -->
+        <div class="hidden md:flex relative h-10 w-8 items-center justify-center">
+          <div
+            class="absolute w-0.5 h-full bg-linear-to-b from-transparent via-pop to-transparent opacity-60"
+          ></div>
+          <div class="absolute w-2 h-2 bg-pop rounded-full animate-pulse"></div>
+        </div>
+      </div>
+      <!-- Desktop Links -->
+      <div class="hidden md:flex gap-6 items-center text-lg">
+        <a routerLink="/" class="nav-item">Home</a>
+        <a routerLink="/features" class="nav-item">About</a>
+        <a routerLink="/pricing" class="nav-item">Contact</a>
 
-    <!-- Desktop Links -->
-    <div class="hidden md:flex gap-6 items-center">
-      <a routerLink="/" class="hover:text-pop myTransition">Home</a>
-      <a routerLink="/features" class="hover:text-pop myTransition">Features</a>
-      <a routerLink="/pricing" class="hover:text-pop myTransition">Pricing</a>
-
-      <!-- Dropdown -->
-      <div class="relative" (mouseenter)="dropdownOpen = true" (mouseleave)="dropdownOpen = false">
-        <button class="hover:text-pop myTransition">Dropdown</button>
+        <!-- Dropdown with fixed hover area -->
         <div
-          *ngIf="dropdownOpen"
-          class="absolute mt-2 w-40 bg-white dark:bg-gray-800 shadow-md rounded-md overflow-hidden z-50"
+          class="dropdown-container"
+          (mouseenter)="dropdownOpen = true"
+          (mouseleave)="dropdownOpen = false"
         >
-          <a class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700" href="#">Action</a>
-          <a class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700" href="#"
-            >Another Action</a
-          >
-          <a class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700" href="#"
-            >Something Else</a
-          >
+          <button class="nav-item myTransition">Products</button>
+          <div *ngIf="dropdownOpen" class="dropdown-menu">
+            <a class="dropdown-item" href="#">Mug</a>
+            <a class="dropdown-item" href="#">Mobile case</a>
+            <a class="dropdown-item" href="#">T-shirt</a>
+          </div>
         </div>
       </div>
     </div>
@@ -32,7 +41,7 @@
     </div>
 
     <!-- Mobile Menu Button -->
-    <button class="md:hidden " (click)="toggleMobileMenu()">
+    <button class="md:hidden" (click)="toggleMobileMenu()">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         class="h-6 w-6 text-pop"
@@ -51,33 +60,28 @@
   </div>
 
   <!-- Mobile Menu -->
-  <div
-    *ngIf="mobileMenuOpen"
-    class="md:hidden  my-2 space-y-2 w-(--myWidth) mx-auto bg-primary"
-  >
-    <a routerLink="/" class="block hover:text-pop myTransition">Home</a>
-    <a routerLink="/features" class="block hover:text-pop myTransition">Features</a>
-    <a routerLink="/pricing" class="block hover:text-pop myTransition">Pricing</a>
+  <div *ngIf="mobileMenuOpen" class="md:hidden my-2 space-y-2 w-(--myWidth) mx-auto ">
+    <a routerLink="/" class="block hover:text-pop myTransition px-3 py-2 rounded-md hover:bg-pop/10"
+      >Home</a
+    >
+    <a routerLink="/features" class="block hover:text-pop myTransition px-3 py-2 rounded-md hover:bg-pop/10">Features</a>
+    <a routerLink="/pricing" class="block hover:text-pop myTransition px-3 py-2 rounded-md hover:bg-pop/10">Pricing</a>
 
     <!-- Mobile Dropdown -->
     <div class="relative">
-      <button (click)="toggleDropdown()" class="w-full text-left hover:text-pop myTransition">
+      <button (click)="toggleDropdown()" class="w-full text-left hover:text-pop myTransition px-3 py-2 rounded-md hover:bg-pop/10">
         Dropdown
       </button>
-      <div
-        *ngIf="dropdownOpen"
-        class="mt-1 w-full bg-white dark:bg-gray-800 shadow-md rounded-md overflow-hidden"
-      >
-        <a class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700" href="#">Action</a>
-        <a class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700" href="#"
-          >Another Action</a
-        >
-        <a class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700" href="#"
-          >Something Else</a
-        >
+      <div *ngIf="dropdownOpen" class="mt-1 w-full dropdown-menu">
+        <a class="dropdown-item" href="#">Action</a>
+        <a class="dropdown-item" href="#">Another Action</a>
+        <a class="dropdown-item" href="#">Something Else</a>
       </div>
     </div>
 
-    <app-mode-toggle></app-mode-toggle>
+    <div class="px-3 py-2">
+
+      <app-mode-toggle></app-mode-toggle>
+    </div>
   </div>
 </nav>
