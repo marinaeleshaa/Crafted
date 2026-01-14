@@ -39,7 +39,7 @@
 
 /* Dropdown menu animations */
 .dropdown-menu {
-  @apply absolute w-40 bg-background shadow-lg rounded-md overflow-hidden z-50 border border-pop/20;
+  @apply absolute w-40  bg-background shadow-lg rounded-md overflow-hidden z-50 border border-pop/20;
   top: calc(100% + 0.5rem);
   animation: slideDown 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(227, 151, 116, 0.2);

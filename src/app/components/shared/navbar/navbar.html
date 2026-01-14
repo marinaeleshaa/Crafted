@@ -1,18 +1,19 @@
-<nav class=" text-primary fixed w-full py-2">
+<nav class=" text-primary fixed w-full z-50 backdrop-blur-2xl py-2">
   <div class="flex justify-between items-center w-(--myWidth) mx-auto">
     <div class="flex items-center gap-6">
       <!-- Logo -->
       <div class="flex items-center gap-6">
-        <div class="relative">
-          <a routerLink="/" class="text-xl font-bold capitalize myTransition"> crafted </a>
-        </div>
+        <a routerLink="/" class="flex items-center gap-2">
+          <img src="/logos.png" alt="Logo" class="w-8 h-8" />
+          <span  class="text-xl font-bold capitalize myTransition"> crafted </span>
+        </a>
         <!-- Creative separator -->
-        <div class="hidden md:flex relative h-10 w-8 items-center justify-center">
+        <!-- <div class="hidden md:flex relative h-10 w-8 items-center justify-center">
           <div
             class="absolute w-0.5 h-full bg-linear-to-b from-transparent via-pop to-transparent opacity-60"
           ></div>
           <div class="absolute w-2 h-2 bg-pop rounded-full animate-pulse"></div>
-        </div>
+        </div> -->
       </div>
       <!-- Desktop Links -->
       <div class="hidden md:flex gap-6 items-center text-lg">
@@ -27,7 +28,7 @@
           (mouseleave)="dropdownOpen = false"
         >
           <button class="nav-item myTransition">Products</button>
-          <div *ngIf="dropdownOpen" class="dropdown-menu">
+          <div *ngIf="dropdownOpen" class="dropdown-menu ">
             <a class="dropdown-item" href="#">Mug</a>
             <a class="dropdown-item" href="#">Mobile case</a>
             <a class="dropdown-item" href="#">T-shirt</a>
