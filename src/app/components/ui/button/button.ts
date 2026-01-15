@@ -1,9 +1,7 @@
 import { Component, input } from '@angular/core';
-import { ɵEmptyOutletComponent } from '@angular/router';
 
 @Component({
   selector: 'app-button',
-  imports: [ɵEmptyOutletComponent],
   templateUrl: './button.html',
   styleUrl: './button.css',
 })
