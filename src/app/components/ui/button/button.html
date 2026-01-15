@@ -1,8 +1,8 @@
 <button
-  class="group relative  font-semibold py-3 px-8 overflow-hidden  myTransition hover:scale-105"
+  class="group relative font-semibold py-3 px-5 md:px-8 overflow-hidden myTransition hover:scale-105"
   [class]="widthClass + ' ' + variantClass + ' ' + roundedClass"
 >
-  <div class="relative z-10 flex items-center justify-center gap-2">
+  <div class="relative z-10 flex items-center justify-center gap-2 text-nowrap">
     <ng-content></ng-content>
   </div>
   @if (variant() !== 'link') {
