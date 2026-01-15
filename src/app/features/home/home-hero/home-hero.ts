@@ -1,9 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
+import { Button } from "../../../components/ui/button/button";
+import { LucideAngularModule } from "lucide-angular";
 
 @Component({
   selector: 'app-home-hero',
-  imports: [CommonModule],
+  imports: [CommonModule, Button, LucideAngularModule],
   templateUrl: './home-hero.html',
   styleUrl: './home-hero.css',
 })

@@ -1,10 +1,7 @@
-<button
-  (click)="toggleMode()"
-  class=" rounded text-pop cursor-pointer"
->
+<app-button (click)="toggleMode()" variant="link">
   @if (mode() === 'light') {
-    <lucide-icon [name]="moonIcon" class="w-6 h-6"></lucide-icon>
+  <lucide-icon [name]="moonIcon" class="w-6 h-6"></lucide-icon>
   } @else {
-    <lucide-icon [name]="sunIcon" class="w-6 h-6"></lucide-icon>
+  <lucide-icon [name]="sunIcon" class="w-6 h-6"></lucide-icon>
   }
-</button>
+</app-button>

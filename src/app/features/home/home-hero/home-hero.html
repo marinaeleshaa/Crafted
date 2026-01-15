@@ -1,15 +1,9 @@
-<section class="w-full flex flex-col justify-between items-center md:flex-row gap-5 h-[80vh]">
+<section class="w-full flex flex-col justify-between items-center md:flex-row gap-5 min-h-[80vh]">
   <!-- left -->
   <div class="md:w-1/3 flex flex-col justify-center gap-6 relative">
-    <!-- Decorative element -->
-    <!-- <div class="absolute -top-8 -left-8 w-24 h-24 bg-pop/10 rounded-full blur-2xl"></div> -->
-    <!-- <div class="absolute -bottom-8 -right-8 w-32 h-32 bg-primary/10 rounded-full blur-3xl"></div> -->
-
-
-
     <!-- Heading with gradient accent -->
     <div class="relative">
-      <h1 class="text-5xl md:text-6xl font-extrabold capitalize leading-tight">
+      <h1 class="text-5xl xl:text-6xl font-extrabold capitalize leading-tight">
         Your design will be
         <span class="relative inline-block">
           <span class="relative z-10">here</span>
@@ -20,22 +14,32 @@
 
     <!-- Description with better spacing -->
     <p class="text-foreground/70 text-lg leading-relaxed">
-      Transform your vision into reality with our cutting-edge design solutions. Built for creators who demand excellence.
+      Transform your vision into reality with our cutting-edge design solutions. Built for creators
+      who demand excellence.
     </p>
 
     <!-- CTA Section -->
-    <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4 mt-2">
-      <button class="group relative rounded-full font-semibold bg-pop text-pop-foreground py-3 px-8 overflow-hidden hover:shadow-lg hover:shadow-pop/25 myTransition hover:scale-105">
-        <span class="relative z-10">Get Started</span>
-        <span class="absolute inset-0 bg-gradient-to-r from-pop to-pop/80 opacity-0 group-hover:opacity-100 myTransition"></span>
-      </button>
+    <div class="flex flex-row items-center gap-4 mt-2">
+      <app-button variant="primary"> Get Started</app-button>
 
-      <button class="font-semibold text-primary hover:text-pop myTransition flex items-center gap-2 group">
+      <app-button variant="link">
         Learn More
-        <svg class="w-4 h-4 group-hover:translate-x-1 myTransition" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="lucide lucide-chevron-right-icon lucide-chevron-right"
+        >
+          <path d="m9 18 6-6-6-6" />
         </svg>
-      </button>
+      </app-button>
     </div>
 
     <!-- Stats or Social Proof -->
@@ -58,10 +62,9 @@
   </div>
 
   <!-- right -->
- <div class="md:w-2/3 min-w-0">
-  <div class="flex h-[40vh] md:h-[60vh] lg:h-[70vh] gap-5 min-w-0">
-
-    @for (item of Images; track $index) {
+  <div class="md:w-2/3 min-w-0">
+    <div class="flex h-[40vh] md:h-[60vh] lg:h-[70vh] gap-5 min-w-0">
+      @for (item of Images; track $index) {
       <div
         class="transition-all duration-700 ease-in-out overflow-hidden"
         [ngClass]="{
@@ -77,9 +80,7 @@
           class="h-full w-full rounded-2xl object-cover transition-transform duration-700 ease-in-out"
         />
       </div>
-    }
-
+      }
+    </div>
   </div>
-</div>
-
 </section>

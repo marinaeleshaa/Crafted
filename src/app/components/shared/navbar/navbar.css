@@ -89,3 +89,7 @@
 .dropdown-item:hover::after {
   transform: translateX(0);
 }
+
+.active-link{
+  @apply text-pop bg-linear-to-r from-pop/30 to-transparent;
+}

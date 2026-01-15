@@ -1,9 +1,10 @@
 import {  CommonModule } from '@angular/common';
 import { Component,  signal, OnInit } from '@angular/core';
 import { LucideAngularModule, Moon, Sun } from 'lucide-angular';
+import { Button } from "../../ui/button/button";
 @Component({
   selector: 'app-mode-toggle',
-  imports: [LucideAngularModule, CommonModule],
+  imports: [LucideAngularModule, CommonModule, Button],
   standalone: true,
   templateUrl: './mode-toggle.html',
   styleUrls: ['./mode-toggle.css'],

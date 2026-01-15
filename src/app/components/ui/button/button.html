@@ -1,1 +1,13 @@
-<p>button works!</p>
+<button
+  class="group relative  font-semibold py-3 px-8 overflow-hidden  myTransition hover:scale-105"
+  [class]="widthClass + ' ' + variantClass + ' ' + roundedClass"
+>
+  <div class="relative z-10 flex items-center justify-center gap-2">
+    <ng-content></ng-content>
+  </div>
+  @if (variant() !== 'link') {
+  <span
+    class="absolute inset-0 bg-linear-to-r from-primary/70 to-pop opacity-0 group-hover:opacity-100 myTransition"
+  ></span>
+  }
+</button>

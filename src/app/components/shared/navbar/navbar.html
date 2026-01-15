@@ -1,39 +1,38 @@
-<nav class=" text-primary fixed w-full z-50 backdrop-blur-2xl py-2">
+<nav class="text-primary fixed w-full z-50 backdrop-blur-2xl py-2">
   <div class="flex justify-between items-center w-(--myWidth) mx-auto">
     <div class="flex items-center gap-6">
       <!-- Logo -->
       <div class="flex items-center gap-6">
         <a routerLink="/" class="flex items-center gap-2">
           <img src="/logos.png" alt="Logo" class="w-8 h-8" />
-          <span  class="text-xl font-bold capitalize myTransition"> crafted </span>
+          <span class="text-xl font-bold capitalize myTransition"> crafted </span>
         </a>
-        <!-- Creative separator -->
-        <!-- <div class="hidden md:flex relative h-10 w-8 items-center justify-center">
-          <div
-            class="absolute w-0.5 h-full bg-linear-to-b from-transparent via-pop to-transparent opacity-60"
-          ></div>
-          <div class="absolute w-2 h-2 bg-pop rounded-full animate-pulse"></div>
-        </div> -->
       </div>
       <!-- Desktop Links -->
-      <div class="hidden md:flex gap-6 items-center text-lg">
-        <a routerLink="/" class="nav-item">Home</a>
-        <a routerLink="/features" class="nav-item">About</a>
-        <a routerLink="/pricing" class="nav-item">Contact</a>
-
+      <div class="hidden md:flex gap-2 items-center text-lg">
+        <a
+          routerLink="/"
+          [routerLinkActiveOptions]="{ exact: true }"
+          routerLinkActive="active-link"
+          class="nav-item"
+          >Home</a
+        >
+        <a routerLink="/about" class="nav-item" routerLinkActive="active-link">About</a>
+        <a routerLink="/store" class="nav-item" routerLinkActive="active-link">Our Store</a>
+        <a routerLink="/contact" class="nav-item" routerLinkActive="active-link">Contact Us</a>
         <!-- Dropdown with fixed hover area -->
-        <div
+        <!-- <div
           class="dropdown-container"
           (mouseenter)="dropdownOpen = true"
           (mouseleave)="dropdownOpen = false"
         >
           <button class="nav-item myTransition">Products</button>
-          <div *ngIf="dropdownOpen" class="dropdown-menu ">
+          <div *ngIf="dropdownOpen" class="dropdown-menu">
             <a class="dropdown-item" href="#">Mug</a>
             <a class="dropdown-item" href="#">Mobile case</a>
             <a class="dropdown-item" href="#">T-shirt</a>
           </div>
-        </div>
+        </div> -->
       </div>
     </div>
     <div class="hidden md:block">
@@ -61,16 +60,32 @@
   </div>
 
   <!-- Mobile Menu -->
-  <div *ngIf="mobileMenuOpen" class="md:hidden my-2 space-y-2 w-(--myWidth) mx-auto ">
+  <div *ngIf="mobileMenuOpen" class="md:hidden my-2 space-y-2 w-(--myWidth) mx-auto">
     <a routerLink="/" class="block hover:text-pop myTransition px-3 py-2 rounded-md hover:bg-pop/10"
       >Home</a
     >
-    <a routerLink="/features" class="block hover:text-pop myTransition px-3 py-2 rounded-md hover:bg-pop/10">Features</a>
-    <a routerLink="/pricing" class="block hover:text-pop myTransition px-3 py-2 rounded-md hover:bg-pop/10">Pricing</a>
+    <a
+      routerLink="/about"
+      class="block hover:text-pop myTransition px-3 py-2 rounded-md hover:bg-pop/10"
+      >About</a
+    >
+    <a
+      routerLink="/store"
+      class="block hover:text-pop myTransition px-3 py-2 rounded-md hover:bg-pop/10"
+      >Our Store</a
+    >
+    <a
+      routerLink="/contact"
+      class="block hover:text-pop myTransition px-3 py-2 rounded-md hover:bg-pop/10"
+      >Contact Us</a
+    >
 
     <!-- Mobile Dropdown -->
-    <div class="relative">
-      <button (click)="toggleDropdown()" class="w-full text-left hover:text-pop myTransition px-3 py-2 rounded-md hover:bg-pop/10">
+    <!-- <div class="relative">
+      <button
+        (click)="toggleDropdown()"
+        class="w-full text-left hover:text-pop myTransition px-3 py-2 rounded-md hover:bg-pop/10"
+      >
         Dropdown
       </button>
       <div *ngIf="dropdownOpen" class="mt-1 w-full dropdown-menu">
@@ -78,10 +93,9 @@
         <a class="dropdown-item" href="#">Another Action</a>
         <a class="dropdown-item" href="#">Something Else</a>
       </div>
-    </div>
+    </div> -->
 
     <div class="px-3 py-2">
-
       <app-mode-toggle></app-mode-toggle>
     </div>
   </div>
