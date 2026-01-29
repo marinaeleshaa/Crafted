@@ -1,13 +1,19 @@
 <button
-  class="group relative font-semibold py-3 px-5 md:px-8 overflow-hidden myTransition hover:scale-105"
-  [class]="widthClass + ' ' + variantClass + ' ' + roundedClass"
+  class="group relative font-semibold overflow-hidden myTransition hover:scale-105"
+  [ngClass]="[
+    widthClass,
+    roundedClass,
+    variantClass,
+    extraClassesList,
+    variant() !== 'icon' ? 'py-3 px-5 md:px-8' : 'p-0',
+  ]"
 >
   <div class="relative z-10 flex items-center justify-center gap-2 text-nowrap">
     <ng-content></ng-content>
   </div>
-  @if (variant() !== 'link') {
-  <span
-    class="absolute inset-0 bg-linear-to-r from-primary/70 to-pop opacity-0 group-hover:opacity-100 myTransition"
-  ></span>
+  @if (variant() !== 'link' && variant() !== 'icon') {
+    <span
+      class="absolute inset-0 bg-linear-to-r from-primary/70 to-pop opacity-0 group-hover:opacity-100 myTransition"
+    ></span>
   }
 </button>

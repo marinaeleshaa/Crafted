@@ -1,7 +1,11 @@
-<main class="main min-h-screen bg-background text-foreground">
-  <app-navbar></app-navbar>
-  <div class="pt-15">
+<main class="min-h-screen bg-background text-foreground">
+  <div class="">
+    <app-navbar></app-navbar>
+  </div>
+  <div class="md:hidden block">
+    <app-mobile-navbar></app-mobile-navbar>
+  </div>
+  <div class="py-15">
     <router-outlet />
   </div>
 </main>
-

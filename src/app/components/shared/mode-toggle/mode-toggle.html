@@ -1,4 +1,4 @@
-<app-button (click)="toggleMode()" variant="link">
+<app-button (click)="toggleMode()" variant="icon" extraClasses="flex items-center" width="fit" >
   @if (mode() === 'light') {
   <lucide-icon [name]="moonIcon" class="w-6 h-6"></lucide-icon>
   } @else {
