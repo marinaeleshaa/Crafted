@@ -5,13 +5,14 @@
     roundedClass,
     variantClass,
     extraClassesList,
-    variant() !== 'icon' ? 'py-3 px-5 md:px-8' : 'p-0',
+    variant() !== 'icon' ? '' : 'p-0!',
+    sizeClass,
   ]"
 >
   <div class="relative z-10 flex items-center justify-center gap-2 text-nowrap">
     <ng-content></ng-content>
   </div>
-  @if (variant() !== 'link' && variant() !== 'icon') {
+  @if (variant() === 'primary' || variant() === 'ghost') {
     <span
       class="absolute inset-0 bg-linear-to-r from-primary/70 to-pop opacity-0 group-hover:opacity-100 myTransition"
     ></span>

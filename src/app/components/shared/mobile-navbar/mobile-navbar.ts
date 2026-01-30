@@ -1,6 +1,6 @@
 import { Component  } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { Heart, House, ShoppingCart, Store, User, LucideAngularModule } from 'lucide-angular';
+import { Heart, House, ShoppingCart, Store, User, LucideAngularModule, Menu } from 'lucide-angular';
 
 @Component({
   selector: 'app-mobile-navbar',
@@ -12,9 +12,9 @@ export class MobileNavbar {
  navItems = [
   { label: 'Home', link: '/', icon: House },
   // { label: 'Store', link: '/store', icon: Store },
-  { label: 'Favorites', link: '/favorites', icon: Heart },
+  { label: 'You', link: '/profile', icon: User },
   { label: 'Cart', link: '/cart', icon: ShoppingCart },
-  { label: 'Profile', link: '/profile', icon: User },
+  { label: 'Menu', link: '/menu', icon: Menu },
 ];
 
 }

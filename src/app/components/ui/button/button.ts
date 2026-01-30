@@ -10,8 +10,9 @@ import { Component, input } from '@angular/core';
 export class Button {
   extraClasses = input<string>('');
   width = input<'fit' | 'full'>('fit');
-  variant = input<'primary' | 'outline' | 'ghost' | 'link'|'icon'>('primary');
+  variant = input<'primary' | 'outline' | 'ghost' | 'link' | 'icon'>('primary');
   rounded = input<'sm' | 'md' | 'lg' | 'full'>('full');
+  size = input<'sm' | 'md' | 'lg'>('md');
 
   get extraClassesList() {
     return this.extraClasses();
@@ -27,10 +28,11 @@ export class Button {
   get variantClass() {
     return {
       primary: 'bg-pop text-pop-foreground hover:shadow-lg hover:shadow-pop/25 ',
-      outline: 'border-2 border-pop text-pop hover:shadow-lg hover:shadow-pop/25',
-      ghost: 'text-pop hover:bg-pop hover:text-pop-foreground hover:shadow-lg hover:shadow-pop/25',
+      outline:
+        'border-2 border-pop/30 hover:border-pop text-pop hover:shadow-lg hover:shadow-pop/25',
+      ghost: 'text-pop  hover:text-pop-foreground hover:shadow-lg hover:shadow-pop/25',
       link: 'text-primary hover:text-pop',
-      icon: ' text-primary hover:text-pop  ',
+      icon: ' text-primary hover:text-pop ',
     }[this.variant()];
   }
 
@@ -43,6 +45,11 @@ export class Button {
     }[this.rounded()];
   }
 
-
-
+  get sizeClass() {
+    return {
+      sm: 'px-3 py-1.5 text-sm',
+      md: 'px-4 py-2 text-base',
+      lg: 'px-5 py-3 text-lg',
+    }[this.size()];
+  }
 }

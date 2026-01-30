@@ -22,6 +22,9 @@
   --pop-foreground: #fff;
 
   --myWidth: 85%;
+  --lg-icon: 2.5rem;
+  --md-icon: 2rem;
+  --sm-icon: 1.5rem;
 }
 
 /* .dark {

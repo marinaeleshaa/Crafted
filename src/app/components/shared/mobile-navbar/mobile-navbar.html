@@ -1,15 +1,15 @@
-<div class="text-primary bg-background fixed w-full z-50 backdrop-blur-2xl py-2 -bottom-1">
-  <div class="flex justify-evenly items-center">
+<div class="text-primary bg-background fixed w-full z-50 backdrop-blur-2xl py-2  bottom-0">
+  <div class="flex justify-evenly items-center ">
     @for (item of navItems; track $index) {
       <div>
         <a
           routerLink="{{ item.link }}"
           [routerLinkActiveOptions]="{ exact: true }"
           routerLinkActive="text-pop"
-          class="hover:text-pop text-base myTransition rounded-md flex items-center flex-col"
+          class="hover:text-pop text-sm myTransition rounded-md flex items-center flex-col"
         >
-          <lucide-icon [name]="item.icon" class="w-5 h-5"></lucide-icon>
-          {{ item.label }}
+          <lucide-icon [name]="item.icon" class="w-7 h-7"></lucide-icon>
+          <!-- {{ item.label }} -->
         </a>
       </div>
     }

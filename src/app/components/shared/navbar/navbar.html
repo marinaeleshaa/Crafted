@@ -59,37 +59,48 @@
 
     <div class="hidden md:flex items-center gap-3">
       <!-- Auth Buttons -->
-      <!-- fav -->
-      <app-button variant="icon" extraClasses="flex items-center">
-        <lucide-icon [img]="Heart" class="w-8 h-8"></lucide-icon>
-      </app-button>
-      <!-- cart -->
-      <app-button variant="icon" extraClasses="flex items-center">
-        <lucide-icon [img]="Cart" class="w-8 h-8"></lucide-icon>
-      </app-button>
-      <!-- user -->
-      <div class="relative" (focusout)="closeDropdown()">
-        <app-button (click)="toggleProfileMenu()" variant="icon" extraClasses="flex items-center ">
-          <lucide-icon [img]="User" class="border rounded-full w-8 h-8"></lucide-icon>
+      @if (isAuthenticated$ | async) {
+        <!-- fav -->
+        <app-button variant="icon"  extraClasses="flex items-center">
+          <lucide-icon [img]="Heart" class="size-(--md-icon)"  ></lucide-icon>
         </app-button>
-        <!-- profile Dropdown -->
-        @if (profileMenuOpen) {
-          <app-dropdown
-            [items]="[
-              { label: 'Profile', href: '/profile' },
-              { label: 'Orders', href: '/' },
-              { label: 'Support', href: '/' },
-            ]"
-            width="w-40"
-            align="right"
+        <!-- cart -->
+        <app-button variant="icon" extraClasses="flex items-center">
+          <lucide-icon [img]="Cart" class="size-(--md-icon)"></lucide-icon>
+        </app-button>
+        <!-- user -->
+        <div class="relative" (focusout)="closeDropdown()">
+          <app-button
+            (click)="toggleProfileMenu()"
+            variant="icon"
+            extraClasses="flex items-center "
           >
-            <li class="group px-4 py-3 w-fit   transition-all duration-200">
-              <app-mode-toggle></app-mode-toggle>
-            </li>
-          </app-dropdown>
-        }
-      </div>
+            <lucide-icon [img]="User" class="border rounded-full size-(--md-icon) "></lucide-icon>
+          </app-button>
+          <!-- profile Dropdown -->
+          @if (profileMenuOpen) {
+            <app-dropdown
+              [items]="[
+                { label: 'Profile', href: '/profile' },
+                { label: 'Menu', href: '/' },
+              ]"
+              width="w-40"
+              align="right"
+            >
+              <li class="group px-4 py-3 w-fit transition-all duration-200">
+                <app-mode-toggle></app-mode-toggle>
+              </li>
+            </app-dropdown>
+          }
+        </div>
+      } @else {
+        <div class="flex items-center gap-2">
+          <app-button routerLink="/login" variant="primary" size="sm">Login</app-button>
+          <app-button routerLink="/register" variant="outline" size="sm">Sign Up</app-button>
+          <app-mode-toggle></app-mode-toggle>
+        </div>
+      }
+
     </div>
   </div>
 </nav>
-
