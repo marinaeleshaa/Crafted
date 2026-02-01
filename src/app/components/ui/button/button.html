@@ -1,18 +1,21 @@
-<button
-  class="group relative font-semibold overflow-hidden myTransition hover:scale-105"
-  [ngClass]="[
+  <!-- [ngClass]="[
     widthClass,
     roundedClass,
     variantClass,
     extraClassesList,
     variant() !== 'icon' ? '' : 'p-0!',
     sizeClass,
-  ]"
+  ]" -->
+<button
+  class="group relative font-semibold overflow-hidden myTransition hover:scale-105"
+  [class]="allClasses()"
+  [type]="type()"
+  [disabled]="disabled()"
 >
   <div class="relative z-10 flex items-center justify-center gap-2 text-nowrap">
     <ng-content></ng-content>
   </div>
-  @if (variant() === 'primary' || variant() === 'ghost') {
+  @if (variant() === 'primary' || variant() === 'ghost' ) {
     <span
       class="absolute inset-0 bg-linear-to-r from-primary/70 to-pop opacity-0 group-hover:opacity-100 myTransition"
     ></span>

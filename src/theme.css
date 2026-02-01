@@ -9,6 +9,8 @@
   --color-secondary-foreground: var(--secondary-foreground);
   --color-pop: var(--pop);
   --color-pop-foreground: var(--pop-foreground);
+  --color-dark:var(--dark);
+  --color-light:var(--light);
 }
 
 :root {
@@ -20,35 +22,14 @@
   --secondary-foreground: #326273;
   --pop: #e39774;
   --pop-foreground: #fff;
+  --dark: #2a515f;
+  --light: #eeeeee;
 
   --myWidth: 85%;
   --lg-icon: 2.5rem;
   --md-icon: 2rem;
   --sm-icon: 1.5rem;
 }
-
-/* .dark {
-  --background: #02171e;
-  --foreground: #eeeeee;
-  --primary: #5C9EAD;
-  --primary-foreground: #02171e;
-  --secondary: #1a3d47;
-  --secondary-foreground: #eeeeee;
-  --pop: #f7783d;
-  --pop-foreground: #2a515f;
-} */
-
-
-/* .dark {
-  --background: #0a1f26;
-  --foreground: #e8f1f2;
-  --primary: #4a8fa1;
-  --primary-foreground: #0a1f26;
-  --secondary: #1a3642;
-  --secondary-foreground: #b8d4d9;
-  --pop: #e39774;
-  --pop-foreground: #0a1f26;
-} */
 
 .dark {
   --background: #0d1f25;
@@ -59,9 +40,11 @@
   --secondary-foreground: #a8d1db;
   --pop: #f68f5f;
   --pop-foreground: #0d1f25;
+  --dark: #0d1f25;
+  --light: #e3f0f3;
 }
 
-*::selection{
-background-color: var(--primary);
-color: var(--primary-foreground)
+*::selection {
+  background-color: var(--primary);
+  color: var(--primary-foreground);
 }
