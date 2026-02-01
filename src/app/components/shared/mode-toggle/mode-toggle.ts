@@ -16,12 +16,13 @@ export class ModeToggle implements OnInit {
   moonIcon = Moon;
 
   ngOnInit(): void {
-    const savedMode = localStorage.getItem('mode') as 'light' | 'dark' | null;
-    if (savedMode) this.applyMode(savedMode);
+    const savedMode = localStorage.getItem('mode') as 'light' | 'dark' ;
+    if (savedMode) this.mode.set(savedMode);
   }
 
   toggleMode() {
     const newMode = this.mode() === 'light' ? 'dark' : 'light';
+    localStorage.setItem('mode', newMode);
     this.applyMode(newMode);
   }
 
@@ -29,6 +30,5 @@ export class ModeToggle implements OnInit {
     this.mode.set(mode);
     const html = document.documentElement;
     html.classList.toggle('dark', mode === 'dark');
-    localStorage.setItem('mode', mode);
   }
 }
