@@ -39,7 +39,12 @@ export class LoginComponent {
   });
 
   isValid = computed(() => {
-    return (this.usernameError() === '' && this.passwordError() === '') && (this.username() !== '' && this.password() !== '');
+    return (
+      this.usernameError() === '' &&
+      this.passwordError() === '' &&
+      this.username() !== '' &&
+      this.password() !== ''
+    );
   });
 
   onSubmit(event: Event) {
@@ -48,41 +53,7 @@ export class LoginComponent {
       return;
     }
     // Reset errors
-    this.formError.set('');
-    // this.usernameError.set('');
-    // this.passwordError.set('');
     this.successMessage.set('');
-    // this.isValid.set(true);
-
-    // Validation
-
-    // if (!this.username()) {
-    //   this.usernameError.set('Username is required');
-    //   isValid = false;
-    // }
-    //     effect(() => {
-    //   if (this.usernameTouched() && !this.username()) {
-    //     this.usernameError.set('Username is required');
-    //   } else {
-    //     this.usernameError.set('');
-    //   }
-    // });
-
-    // if (!this.password()) {
-    //   this.passwordError.set('Password is required');
-    //   this.isValid.set(false);
-    // } else if (this.password().length < 6) {
-    //   this.passwordError.set('Password must be at least 6 characters');
-    //   this.isValid.set(false);
-    // }
-
-    // if (!this.username()) {
-    //   this.usernameError.set('Username is required');
-    //   this.isValid.set(false);
-    // } else if (this.username().length < 3) {
-    //   this.usernameError.set('Username must be at least 3 characters');
-    //   this.isValid.set(false);
-    // }
 
     // Simulate API call
     this.isLoading.set(true);

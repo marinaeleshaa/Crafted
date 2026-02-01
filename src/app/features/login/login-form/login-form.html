@@ -11,7 +11,6 @@
       <!-- Login Form -->
       <form (submit)="onSubmit($event)" class="space-y-6">
         <!-- Username Input -->
-        <!-- (valueChange)="username.set($event)" -->
         <app-input
           label="Username"
           (onTouched)="usernameTouched.set(true)"
@@ -21,11 +20,10 @@
           name="username"
           placeholder="Enter your username"
           [required]="true"
-
+          [disabled]="isLoading()"
         />
 
         <!-- Password Input -->
-        <!-- (valueChange)="password.set($event)" -->
         <app-input
           label="Password"
           (onTouched)="passwordTouched.set(true)"
@@ -35,6 +33,7 @@
           placeholder="Enter your password"
           [required]="true"
           [error]="passwordError()"
+          [disabled]="isLoading()"
         />
 
         <!-- Remember Me & Forgot Password -->
@@ -54,22 +53,8 @@
           </app-button>
         </div>
 
-        <!-- Error Message -->
-        @if (formError()) {
-          <div class="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg">
-            <p class="text-sm">{{ formError() }}</p>
-          </div>
-        }
-
-        <!-- Success Message -->
-        @if (successMessage()) {
-          <div class="bg-green-50 border border-green-200 text-green-700 px-4 py-3 rounded-lg">
-            <p class="text-sm">{{ successMessage() }}</p>
-          </div>
-        }
-
         <!-- Submit Button -->
-        <app-button type="submit" width="full" [disabled]=" !isValid()">
+        <app-button type="submit" width="full" [disabled]="!isValid()">
           @if (isLoading()) {
             <svg class="animate-spin h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24">
               <circle
