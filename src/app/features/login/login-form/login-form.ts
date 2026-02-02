@@ -53,6 +53,10 @@ export class LoginComponent {
       return;
     }
     // Reset errors
+
+    this.usernameTouched.set(false);
+    this.passwordTouched.set(false);
+    this.formError.set('');
     this.successMessage.set('');
 
     // Simulate API call
@@ -71,5 +75,8 @@ export class LoginComponent {
       // In a real app, you would navigate to the dashboard here
       // this.router.navigate(['/dashboard']);
     }, 1500);
+
+      this.username.set('');
+    this.password.set('');
   }
 }

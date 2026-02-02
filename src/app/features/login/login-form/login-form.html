@@ -13,6 +13,7 @@
         <!-- Username Input -->
         <app-input
           label="Username"
+          [value]="username()"
           (onTouched)="usernameTouched.set(true)"
           (valueChange)="username.set($event)"
           type="text"
@@ -26,6 +27,7 @@
         <!-- Password Input -->
         <app-input
           label="Password"
+          [value]="password()"
           (onTouched)="passwordTouched.set(true)"
           (valueChange)="password.set($event)"
           type="password"

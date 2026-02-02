@@ -20,10 +20,7 @@ export class Button {
     return this.extraClasses();
   }
 
-  constructor() {
 
-    console.log(this.disabled());
-  }
 
   get widthClass() {
     return {
@@ -62,7 +59,7 @@ export class Button {
 
   allClasses() {
     if (this.disabled()) {
-      return `opacity-50 cursor-not-allowed hover:scale-100!   ${this.widthClass} ${this.variantClass} ${this.roundedClass} ${this.sizeClass} ${this.extraClassesList}`;
+      return `opacity-50 cursor-not-allowed! hover:scale-100!   ${this.widthClass} ${this.variantClass} ${this.roundedClass} ${this.sizeClass} ${this.extraClassesList}`;
     }
     return `${this.widthClass} ${this.variantClass} ${this.roundedClass} ${this.sizeClass} ${this.extraClassesList}`;
   }

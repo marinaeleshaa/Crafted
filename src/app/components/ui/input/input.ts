@@ -1,4 +1,4 @@
-import { Component, input, output, signal, computed, OnInit } from '@angular/core';
+import { Component, input, output, signal, computed, OnInit, effect } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
@@ -8,7 +8,7 @@ import { CommonModule } from '@angular/common';
   imports: [CommonModule, FormsModule],
   templateUrl: './input.html',
 })
-export class Input implements OnInit {
+export class Input  {
   // Inputs props
   id = input<string>('input-' + Math.random().toString(36).substr(2, 9));
   label = input<string>('');
@@ -25,8 +25,10 @@ export class Input implements OnInit {
   valueChange = output<string>();
   onTouched = output<void>();
 
-  ngOnInit(): void {
-    this.inputValue.set(this.value());
+  constructor() {
+    effect(() => {
+      this.inputValue.set(this.value());
+    });
   }
 
   // Internal state
