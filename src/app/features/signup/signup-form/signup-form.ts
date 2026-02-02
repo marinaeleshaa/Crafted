@@ -1,20 +1,19 @@
-import { Component, computed, effect, signal } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { Input } from '../../../components/ui/input/input';
+import { Component, computed, signal } from '@angular/core';
 import { Button } from '../../../components/ui/button/button';
+import { Input } from '../../../components/ui/input/input';
 import { RouterLink } from '@angular/router';
 
 @Component({
-  selector: 'app-login-form',
-  standalone: true,
-  imports: [CommonModule, FormsModule, Input, Button, RouterLink],
-  templateUrl: './login-form.html',
+  selector: 'app-signup-form',
+  imports: [Button, Input, RouterLink],
+  templateUrl: './signup-form.html',
+  styleUrl: './signup-form.css',
 })
-export class LoginComponent {
+export class SignupForm {
   // Form fields
   username = signal<string>('');
   password = signal<string>('');
+  confirmPassword = signal<string>('');
 
   // Form state
   isLoading = signal(false);
@@ -22,6 +21,7 @@ export class LoginComponent {
   successMessage = signal('');
   usernameTouched = signal<boolean>(false);
   passwordTouched = signal(false);
+  confirmPasswordTouched = signal(false);
   usernameError = computed(() => {
     if (this.usernameTouched() && this.username() === '') {
       return 'Username is required';
@@ -38,13 +38,23 @@ export class LoginComponent {
     }
     return '';
   });
+  confirmPasswordError = computed(() => {
+    if (this.confirmPasswordTouched() && this.confirmPassword() === '') {
+      return 'Please confirm your password';
+    } else if (this.confirmPassword() !== this.password()) {
+      return 'Passwords do not match';
+    }
+    return '';
+  });
 
   isValid = computed(() => {
     return (
       this.usernameError() === '' &&
       this.passwordError() === '' &&
+      this.confirmPasswordError() === '' &&
       this.username() !== '' &&
-      this.password() !== ''
+      this.password() !== '' &&
+      this.confirmPassword() !== ''
     );
   });
 
@@ -57,6 +67,7 @@ export class LoginComponent {
 
     this.usernameTouched.set(false);
     this.passwordTouched.set(false);
+    this.confirmPasswordTouched.set(false);
     this.formError.set('');
     this.successMessage.set('');
 
@@ -71,12 +82,15 @@ export class LoginComponent {
       console.log('Login credentials:', {
         username: this.username(),
         password: this.password(),
+        confirmPassword: this.confirmPassword(),
       });
 
       // In a real app, you would navigate to the dashboard here
       // this.router.navigate(['/dashboard']);
       this.username.set('');
       this.password.set('');
+      this.confirmPassword.set('');
     }, 1500);
+
   }
 }
