@@ -1,4 +1,4 @@
-// ? take old state and return new state
+// ? take old state + action and return new state
 
 import { createReducer, on } from '@ngrx/store';
 import { initialAuthState } from './auth.state';
@@ -9,9 +9,11 @@ export const AuthReducer = createReducer(
   on(AuthActions.LoginAction, (state, { username, password }) => ({
     ...state,
     isAuthenticated: true,
+    userData: { username, password },
   })),
   on(AuthActions.LogoutAction, (state) => ({
     ...state,
     isAuthenticated: false,
+    userData: undefined,
   })),
 );

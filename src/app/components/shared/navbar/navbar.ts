@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { ModeToggle } from '../mode-toggle/mode-toggle';
@@ -15,6 +15,7 @@ import { Dropdown } from '../../ui/dropdown/dropdown';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { SelectIsAuthenticated } from '../../../store/auth/auth.selectors';
+import * as AuthActions from '../../../store/auth/auth.actions';
 
 @Component({
   selector: 'app-navbar',
@@ -40,7 +41,19 @@ export class Navbar implements OnInit {
     this.isAuthenticated$ = this.store.select(SelectIsAuthenticated);
   }
 
-  toggleDropdown() {
+  @HostListener('document:click', ['$event'])
+  onDocumentClick(event: MouseEvent) {
+    const target = event.target as HTMLElement;
+
+    // ? Close dropdowns if clicked outside
+    if (!target.closest('.dropdown-wrapper')) {
+      this.dropdownOpen = false;
+      this.profileMenuOpen = false;
+    }
+  }
+
+  toggleDropdown(event: Event) {
+    event.stopPropagation();
     this.dropdownOpen = !this.dropdownOpen;
   }
 
@@ -51,7 +64,12 @@ export class Navbar implements OnInit {
     }, 200);
   }
 
-  toggleProfileMenu() {
+  toggleProfileMenu(event: Event) {
+    event.stopPropagation();
     this.profileMenuOpen = !this.profileMenuOpen;
+  }
+
+  logout() {
+    this.store.dispatch(AuthActions.LogoutAction());
   }
 }

@@ -10,7 +10,7 @@
       </div>
 
       <!-- search input -->
-      <div class="relative bg-pop/10 rounded-full" (focusout)="closeDropdown()">
+      <div class="relative bg-pop/10 rounded-full dropdown-wrapper" >
         <input
           type="text"
           placeholder="Search..."
@@ -36,7 +36,7 @@
 
         <button
           class="absolute left-2 top-1/2 transform -translate-y-1/2"
-          (click)="toggleDropdown()"
+          (click)="toggleDropdown($event)"
         >
           <lucide-icon
             [name]="icon"
@@ -69,9 +69,9 @@
           <lucide-icon [img]="Cart" class="size-(--md-icon)"></lucide-icon>
         </app-button>
         <!-- user -->
-        <div class="relative" (focusout)="closeDropdown()">
+        <div class="relative dropdown-wrapper">
           <app-button
-            (click)="toggleProfileMenu()"
+            (click)="toggleProfileMenu($event)"
             variant="icon"
             extraClasses="flex items-center "
           >
@@ -87,8 +87,11 @@
               width="w-40"
               align="right"
             >
-              <li class="group px-4 py-3 w-fit transition-all duration-200">
-                <app-mode-toggle></app-mode-toggle>
+            <li class="group px-4 py-3 w-fit transition-all duration-200">
+              <app-mode-toggle></app-mode-toggle>
+            </li>
+              <li class="group px-2 py-3  transition-all duration-200">
+                <app-button (click)="logout()" variant="ghost" width="full">Logout</app-button>
               </li>
             </app-dropdown>
           }

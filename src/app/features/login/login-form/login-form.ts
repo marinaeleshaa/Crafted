@@ -3,7 +3,9 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Input } from '../../../components/ui/input/input';
 import { Button } from '../../../components/ui/button/button';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
+import { Store } from '@ngrx/store';
+import * as AuthActions from '../../../store/auth/auth.actions';
 
 @Component({
   selector: 'app-login-form',
@@ -16,6 +18,10 @@ export class LoginComponent {
   username = signal<string>('');
   password = signal<string>('');
 
+  constructor(
+    private store: Store,
+    private router: Router,
+  ) {}
   // Form state
   isLoading = signal(false);
   formError = signal('');
@@ -63,18 +69,20 @@ export class LoginComponent {
     // Simulate API call
     this.isLoading.set(true);
 
+    this.store.dispatch(
+      AuthActions.LoginAction({
+        username: this.username(),
+        password: this.password(),
+      }),
+    );
+
     setTimeout(() => {
-      // Simulate successful login
+      // Simulate successful loginz
       this.isLoading.set(false);
       this.successMessage.set('Login successful! Redirecting...');
 
-      console.log('Login credentials:', {
-        username: this.username(),
-        password: this.password(),
-      });
-
       // In a real app, you would navigate to the dashboard here
-      // this.router.navigate(['/dashboard']);
+      this.router.navigate(['/']);
       this.username.set('');
       this.password.set('');
     }, 1500);

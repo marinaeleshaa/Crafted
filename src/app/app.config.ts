@@ -7,6 +7,7 @@ import { provideStore } from '@ngrx/store';
 import { provideEffects } from '@ngrx/effects';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
 import { AuthReducer } from './store/auth/auth.reducer';
+import { AuthEffects } from './store/auth/auth.effects';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -15,7 +16,7 @@ export const appConfig: ApplicationConfig = {
     provideStore({
       auth: AuthReducer,
     }),
-    provideEffects(),
+    provideEffects(AuthEffects),
     provideStoreDevtools({ maxAge: 25, logOnly: !isDevMode() }),
   ],
 };
