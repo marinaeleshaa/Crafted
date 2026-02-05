@@ -43,7 +43,7 @@
   --primary-foreground: #0d1f25;
   --secondary: #1c3440;
   --secondary-foreground: #a8d1db;
-  --pop: #f68f5f;
+  --pop: rgb(246, 143, 95);
   --pop-foreground: #0d1f25;
   --dark: #0d1f25;
   --light: #e3f0f3;

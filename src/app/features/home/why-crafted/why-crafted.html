@@ -1,0 +1,100 @@
+<section>
+  <!-- Heading -->
+  <div class="w-fit relative mx-auto">
+    <h2 class="text-4xl md:text-5xl font-bold font-title text-center mb-6">Why Crafted?</h2>
+
+    <!-- Decorative left accent lines -->
+    <svg viewBox="0 0 6 6" class="w-15 h-15 fill-pop absolute -top-8 -left-15 animate-pulse">
+      <path
+        d="
+      M 2,2
+      Q 2,4
+        5,4
+    "
+      />
+    </svg>
+    <svg viewBox="0 0 6 6" class="w-15 h-15 fill-pop absolute -top-7 -left-16 animate-pulse">
+      <path
+        d="
+      M 1,2
+      Q 2,5
+        5,5
+    "
+      />
+    </svg>
+    <svg viewBox="0 0 6 6" class="w-15 h-15 fill-pop absolute -top-1 -left-14 animate-pulse">
+      <path
+        d="
+      M 1,2
+      Q 2,4
+        5,4
+    "
+      />
+    </svg>
+
+    <!-- Decorative right accent lines (mirrored) -->
+    <svg
+      viewBox="0 0 6 6"
+      class="w-15 h-15 fill-pop absolute -top-8 -right-15 scale-x-[-1] animate-pulse"
+    >
+      <path
+        d="
+    M 2,2
+    Q 2,4
+      5,4
+  "
+      />
+    </svg>
+    <svg
+      viewBox="0 0 6 6"
+      class="w-15 h-15 fill-pop absolute -top-7 -right-16 scale-x-[-1] animate-pulse"
+    >
+      <path
+        d="
+    M 1,2
+    Q 2,5
+      5,5
+  "
+      />
+    </svg>
+    <svg
+      viewBox="0 0 6 6"
+      class="w-15 h-15 fill-pop absolute -top-1 -right-14 scale-x-[-1] animate-pulse"
+    >
+      <path
+        d="
+    M 1,2
+    Q 2,4
+      5,4
+  "
+      />
+    </svg>
+  </div>
+
+  <div class="grid grid-cols-1 sm:grid-cols-3 xl:grid-cols-6 gap-6">
+    @for (point of points; track $index) {
+      <!-- WRAPPER -->
+      <div
+        class="group drop-shadow-[0_0px_0px_rgba(246,143,95,0.3)] hover:drop-shadow-[0_0px_10px_rgba(246,143,95,0.6)] transition-all duration-500"
+      >
+        <!-- BLOB -->
+        <div
+          class="blob bg-primary flex items-center justify-center p-4 transition-all duration-500 group-hover:rotate-10"
+        >
+          <div
+            class="text-secondary-foreground bg-secondary rounded-[40px] p-4 max-w-[70%] text-center flex flex-col justify-evenly items-center text-base font-medium min-h-32.5 text-balance h-fit group-hover:scale-105 transition-all duration-500 group-hover:-rotate-10"
+          >
+            <lucide-angular
+              [img]="point.icon"
+              class="w-8 h-8 sm:w-6 sm:h-6 text-pop mb-1"
+            ></lucide-angular>
+
+            <span>
+              {{ point.title }}
+            </span>
+          </div>
+        </div>
+      </div>
+    }
+  </div>
+</section>
