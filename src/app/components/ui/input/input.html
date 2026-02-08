@@ -13,21 +13,30 @@
         }
       </label>
     }
+    <div class="relative">
+      <input
+        (blur)="onBlur()"
+        [(ngModel)]="inputValue"
+        (ngModelChange)="onValueChange($event)"
+        [id]="id()"
+        [type]="mainType()"
+        [name]="name()"
+        [placeholder]="placeholder()"
+        [required]="required()"
+        [disabled]="disabled()"
+        [class]="inputClasses()"
+      />
+      @if (type() === 'password') {
+        <lucide-icon
+          [img]="eyeIcon()"
+          [ngClass]="error() !== '' ? 'text-pop' : 'text-primary'"
+          class="absolute right-2 top-1/2  transform -translate-y-1/2 cursor-pointer"
+          (click)="togglePasswordVisibility()"
+        ></lucide-icon>
+      }
+    </div>
 
-    <input
-      (blur)="onBlur()"
-      [(ngModel)]="inputValue"
-      (ngModelChange)="onValueChange($event)"
-      [id]="id()"
-      [type]="type()"
-      [name]="name()"
-      [placeholder]="placeholder()"
-      [required]="required()"
-      [disabled]="disabled()"
-      [class]="inputClasses()"
-    />
-
-    @if (error() && touched()) {
+    @if (error() && touched() && type() !== 'password') {
       <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
         <svg class="h-5 w-5 text-pop" fill="currentColor" viewBox="0 0 20 20">
           <path

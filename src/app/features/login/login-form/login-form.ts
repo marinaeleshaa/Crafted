@@ -6,17 +6,19 @@ import { Button } from '../../../components/ui/button/button';
 import { Router, RouterLink } from '@angular/router';
 import { Store } from '@ngrx/store';
 import * as AuthActions from '../../../store/auth/auth.actions';
+import { ModeToggle } from "../../../components/shared/mode-toggle/mode-toggle";
 
 @Component({
   selector: 'app-login-form',
   standalone: true,
-  imports: [CommonModule, FormsModule, Input, Button, RouterLink],
+  imports: [CommonModule, FormsModule, Input, Button, RouterLink, ModeToggle],
   templateUrl: './login-form.html',
 })
 export class LoginComponent {
   // Form fields
   username = signal<string>('');
   password = signal<string>('');
+  visible = signal<boolean>(false);
 
   constructor(
     private store: Store,
@@ -53,6 +55,10 @@ export class LoginComponent {
       this.password() !== ''
     );
   });
+
+  togglePasswordVisibility() {
+    this.visible.set(!this.visible());
+  }
 
   onSubmit(event: Event) {
     event.preventDefault();

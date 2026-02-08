@@ -1,0 +1,9 @@
+.bg {
+  background:
+    radial-gradient(circle at 20% 30%, var(--pop) 0%, transparent 40%),
+    radial-gradient(circle at 80% 20%, var(--primary) 0%, transparent 40%),
+    radial-gradient(circle at 60% 80%, var(--secondary) 0%, transparent 40%),
+    radial-gradient(circle at 30% 70%, var(--primary) 0%, transparent 40%),
+    radial-gradient(circle at 70% 90%, var(--pop) 0%, transparent 40%);
+  filter: blur(60px);
+}

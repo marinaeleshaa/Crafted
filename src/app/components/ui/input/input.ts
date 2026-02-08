@@ -1,14 +1,18 @@
 import { Component, input, output, signal, computed, OnInit, effect } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { Eye, EyeClosed, LucideAngularModule } from 'lucide-angular';
 
 @Component({
   selector: 'app-input',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, LucideAngularModule],
   templateUrl: './input.html',
 })
-export class Input  {
+export class Input {
+  readonly openedEye = Eye;
+  readonly closedEye = EyeClosed;
+
   // Inputs props
   id = input<string>('input-' + Math.random().toString(36).substr(2, 9));
   label = input<string>('');
@@ -20,6 +24,18 @@ export class Input  {
   error = input<string>('');
   hint = input<string>('');
   value = input<string>('');
+  visible = signal<boolean>(false);
+
+  mainType = computed(() => {
+    if (this.type() === 'password') {
+      return this.visible() ? 'text' : 'password';
+    }
+    return this.type();
+  });
+
+  eyeIcon = computed(() => {
+    return this.visible() ? this.openedEye : this.closedEye;
+  });
 
   // Outputs
   valueChange = output<string>();
@@ -31,19 +47,20 @@ export class Input  {
     });
   }
 
+  togglePasswordVisibility() {
+    this.visible.set(!this.visible());
+  }
   // Internal state
   inputValue = signal('');
   touched = signal(false);
 
   // Computed: label should float up when focused or has value
-  shouldFloat = computed(() =>  this.inputValue().length > 0);
+  shouldFloat = computed(() => this.inputValue().length > 0);
 
   onValueChange(value: string) {
     this.inputValue.set(value);
     this.valueChange.emit(this.inputValue());
   }
-
-
 
   onBlur() {
     this.touched.set(true);
@@ -68,6 +85,8 @@ export class Input  {
       'border-pop bg-secondary text-secondary-foreground placeholder-pop focus:border-pop focus:ring-pop';
     const disabledClasses = 'bg-secondary cursor-not-allowed opacity-60';
 
+    const typeClasses = this.type() === 'password' ? 'pr-12!' : '';
+
     if (this.disabled()) {
       return `${baseClasses} ${disabledClasses}`;
     }
@@ -76,6 +95,6 @@ export class Input  {
       return `${baseClasses} ${errorClasses}`;
     }
 
-    return `${baseClasses} ${normalClasses}`;
+    return `${baseClasses} ${normalClasses} ${typeClasses}`;
   }
 }

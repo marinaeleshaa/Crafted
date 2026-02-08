@@ -1,11 +1,8 @@
-<div class="min-h-screen relative bg-cover bg-center bg-[url('/login.jpg')] ">
-  <span class="absolute inset-0 bg-black/30"></span>
+<div class="min-h-screen relative bg-dark">
+  <span class="absolute inset-0 bg"></span>
   <div class="w-(--myWidth) mx-auto">
-
-    <div class="flex items-center justify-start p-4 px-4 sm:px-6 lg:px-8 ">
-      <app-button (click)="goBack()" variant="icon" size="sm" class="">
-        <lucide-icon class="lg:size-(--lg-icon) md:size-(--md-icon) size-(--sm-icon) text-background!" [img]="CircleChevronLeft"></lucide-icon>
-      </app-button>
+    <div class="flex items-center justify-start p-4 px-4 sm:px-6 lg:px-8">
+      <app-go-back-btn></app-go-back-btn>
     </div>
     <router-outlet></router-outlet>
   </div>
