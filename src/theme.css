@@ -9,6 +9,10 @@
   --color-secondary-foreground: var(--secondary-foreground);
   --color-pop: var(--pop);
   --color-pop-foreground: var(--pop-foreground);
+  --color-dark: var(--dark);
+  --color-light: var(--light);
+  --font-title: var(--title-font);
+  --font-main: var(--main-font);
 }
 
 :root {
@@ -20,21 +24,32 @@
   --secondary-foreground: #326273;
   --pop: #e39774;
   --pop-foreground: #fff;
+  --dark: #2a515f;
+  --light: #eeeeee;
+  --title-font: 'winky rough', sans-serif;
+  /* --title-font: 'wendy one', sans-serif; */
+  --main-font: 'lexend';
 
-  --myWidth: 80%;
+  --myWidth: 85%;
+  --lg-icon: 2.5rem;
+  --md-icon: 2rem;
+  --sm-icon: 1.5rem;
 }
 
 .dark {
-  --background: #02171e;
-  --foreground: #eeeeee;
-  --primary: #326273;
-  --primary-foreground: #02171e;
-  --secondary: #1a3d47;
-  --secondary-foreground: #eeeeee;
-  --pop: #e39774;
-  --pop-foreground: #2a515f;
+  --background: #0d1f25;
+  --foreground: #e3f0f3;
+  --primary: #4d8ea0;
+  --primary-foreground: #0d1f25;
+  --secondary: #1c3440;
+  --secondary-foreground: #a8d1db;
+  --pop: rgb(246, 143, 95);
+  --pop-foreground: #0d1f25;
+  --dark: #0d1f25;
+  --light: #e3f0f3;
 }
 
-
-
-
+*::selection {
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+}

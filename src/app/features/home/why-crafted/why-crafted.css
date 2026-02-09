@@ -1,0 +1,24 @@
+.blob {
+  width: 100%;
+  min-height: 280px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  clip-path: shape(
+    from 74.96% 85.55%,
+    curve to 50.95% 92.48% with 63.4% 91.23%,
+    curve to 30.12% 84.83% with 38.51% 93.72%,
+    curve to 15.42% 66.51% with 21.74% 75.94%,
+    curve to 8.71% 44.73% with 9.1% 57.08%,
+    curve to 17.9% 24.73% with 8.32% 32.38%,
+    curve to 38.2% 14.56% with 27.49% 17.08%,
+    curve to 59.24% 14.81% with 48.92% 12.05%,
+    curve to 78.01% 24.82% with 69.56% 17.57%,
+    curve to 88.84% 43.4% with 86.47% 32.07%,
+    curve to 88.86% 67.3% with 91.2% 54.73%,
+    curve to 74.96% 85.55% with 86.53% 79.87%
+  );
+}
+
+
+

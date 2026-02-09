@@ -1,0 +1,90 @@
+<div class="flex items-center justify-center px-4">
+  <div class="w-full max-w-md">
+    <!-- Login Card -->
+    <div class="bg-white/20 backdrop-blur-lg rounded-2xl shadow-xl p-6 sm:p-8 gap-4 flex flex-col">
+      <!-- Header -->
+      <div class="text-center">
+        <h1 class="text-3xl font-bold text-background mb-2">Not A Member Yet!</h1>
+        <p class="text-secondary">Sign up to create an account</p>
+      </div>
+
+      <!-- Login Form -->
+      <form (submit)="onSubmit($event)" class="flex flex-col gap-6 mt-4">
+        <!-- Username Input -->
+        <app-input
+          label="Username"
+          [value]="username()"
+          (onTouched)="usernameTouched.set(true)"
+          (valueChange)="username.set($event)"
+          type="text"
+          [error]="usernameError()"
+          name="username"
+          placeholder="Enter your username"
+          [required]="true"
+          [disabled]="isLoading()"
+        />
+
+        <!-- Password Input -->
+        <app-input
+          label="Password"
+          [value]="password()"
+          (onTouched)="passwordTouched.set(true)"
+          (valueChange)="password.set($event)"
+          type="password"
+          name="password"
+          placeholder="Enter your password"
+          [required]="true"
+          [error]="passwordError()"
+          [disabled]="isLoading()"
+        />
+        <!-- confirm Password Input -->
+        <app-input
+          label="Confirm Password"
+          [value]="confirmPassword()"
+          (onTouched)="confirmPasswordTouched.set(true)"
+          (valueChange)="confirmPassword.set($event)"
+          type="password"
+          name="confirmPassword"
+          placeholder="confirm your password"
+          [required]="true"
+          [error]="confirmPasswordError()"
+          [disabled]="isLoading()"
+        />
+
+        <!-- Submit Button -->
+        <app-button type="submit" width="full" [disabled]="!isValid()">
+          @if (isLoading()) {
+            <svg class="animate-spin h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24">
+              <circle
+                class="opacity-25"
+                cx="12"
+                cy="12"
+                r="10"
+                stroke="currentColor"
+                stroke-width="4"
+              ></circle>
+              <path
+                class="opacity-75"
+                fill="currentColor"
+                d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+              ></path>
+            </svg>
+            <span>Signing up...</span>
+          } @else {
+            <span>Sign Up</span>
+          }
+        </app-button>
+      </form>
+
+      <!-- Sign Up Link -->
+      <div class="text-center">
+        <p class="text-sm text-light/80">
+          Already have an account?
+          <app-button routerLink="/login" variant="link" extraClasses="text-light/80!">
+            Sign in
+          </app-button>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
