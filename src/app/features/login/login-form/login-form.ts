@@ -6,12 +6,11 @@ import { Button } from '../../../components/ui/button/button';
 import { Router, RouterLink } from '@angular/router';
 import { Store } from '@ngrx/store';
 import * as AuthActions from '../../../store/auth/auth.actions';
-import { ModeToggle } from "../../../components/shared/mode-toggle/mode-toggle";
 
 @Component({
   selector: 'app-login-form',
   standalone: true,
-  imports: [CommonModule, FormsModule, Input, Button, RouterLink, ModeToggle],
+  imports: [CommonModule, FormsModule, Input, Button, RouterLink],
   templateUrl: './login-form.html',
 })
 export class LoginComponent {
