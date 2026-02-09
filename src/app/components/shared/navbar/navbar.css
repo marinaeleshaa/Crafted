@@ -1,5 +1,5 @@
-@import 'tailwindcss';
-@import "../../../../theme.css";
+
+@reference  '../../../../styles.css'
 
 .nav-item {
   @apply px-4 py-2 relative rounded-lg;
