@@ -78,9 +78,9 @@ export class Input {
 
   inputClasses() {
     const baseClasses =
-      'w-full px-4 py-3 rounded-full transition-all outline-none duration-200 focus:ring-pop focus:outline-none focus:ring-3 ';
+      'w-full px-4 py-3 rounded-full transition-all outline-none duration-200 focus:ring-pop/30 focus:outline-none focus:ring-3 ';
     const normalClasses =
-      'border-gray-300 bg-secondary text-secondary-foreground placeholder-secondary-foreground/60 focus:border-blue-500 focus:ring-blue-500';
+      'border-gray-300 bg-secondary text-secondary-foreground placeholder-foreground/60 focus:border-blue-500 focus:ring-blue-500';
     const errorClasses =
       'border-pop bg-secondary text-secondary-foreground placeholder-pop focus:border-pop focus:ring-pop';
     const disabledClasses = 'bg-secondary cursor-not-allowed opacity-60';

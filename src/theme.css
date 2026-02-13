@@ -17,14 +17,15 @@
 
 :root {
   --background: #eeeeee;
-  --foreground: #2a515f;
-  --primary: #326273;
+  --foreground: #004055;
+  --primary: #004055;
+  /* --primary: #16405b; */
   --primary-foreground: #fff;
-  --secondary: #e1e0e0;
-  --secondary-foreground: #326273;
-  --pop: #e39774;
-  --pop-foreground: #fff;
-  --dark: #2a515f;
+  --secondary: #dadfe1;
+  --secondary-foreground: #006080;
+  --pop: #e65722;
+  --pop-foreground: #ffffff;
+  --dark: #004055;
   --light: #eeeeee;
   --title-font: 'winky rough', sans-serif;
   /* --title-font: 'wendy one', sans-serif; */
@@ -37,14 +38,15 @@
 }
 
 .dark {
-  --background: #0d1f25;
-  --foreground: #e3f0f3;
-  --primary: #4d8ea0;
-  --primary-foreground: #0d1f25;
-  --secondary: #1c3440;
-  --secondary-foreground: #a8d1db;
-  --pop: rgb(246, 143, 95);
-  --pop-foreground: #0d1f25;
+  --background: #00202a;
+  --foreground: #e8e8e8;
+  --primary: #3db9e0;
+  --primary-foreground: #0c2231;
+  --secondary: #01394a;
+  /* --secondary: #1c3440; */
+  --secondary-foreground: #81cfe0;
+  --pop: #f2784b;
+  --pop-foreground: #1c2833;
   --dark: #0d1f25;
   --light: #e3f0f3;
 }

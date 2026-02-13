@@ -1,0 +1,48 @@
+<div
+  class="card cursor-pointer group hover:-translate-y-2 myTransition z-20 bg-secondary rounded-4xl flex flex-col justify-between relative p-3"
+>
+  <!-- card decoration -->
+  <span class="absolute w-20 h-20 rounded-full bg-background z-10 -bottom-1 -right-2"></span>
+
+  <!-- image -->
+  <div class="relative rounded-3xl overflow-hidden w-full">
+    <img
+      src="./hero/phone.jpg"
+      class="w-full group-hover:scale-110 group-hover:rotate-6 myTransition h-56 object-cover"
+    />
+    <span
+      class="absolute inset-0 h-0 opacity-0 group-hover:opacity-100 group-hover:h-full transition-all duration-500 bg-linear-to-br from-primary/50 to-pop/40 text-pop-foreground px-2 py-1 text-sm rounded-bl-2xl"
+    >
+    </span>
+  </div>
+
+  <!-- content -->
+  <div class="flex p-4 pr-0 justify-between items-start relative z-20">
+    <!-- info -->
+    <div class="space-y-2 relative w-full">
+      <h2 class="text-xl text-secondary-foreground capitalize font-bold">{{ title() }}</h2>
+      <p class="text-secondary-foreground/70 text-sm">
+        {{ description() }}
+      </p>
+
+      <span class="font-bold text-secondary-foreground text-lg">{{ price() }}</span>
+    </div>
+    <!-- wishlist -->
+    <div>
+      <app-button variant="icon" class="  ">
+        <lucide-icon [img]="heartIcon"  class="w-8 h-8  "></lucide-icon>
+      </app-button>
+    </div>
+  </div>
+
+  <!-- add to cart -->
+  <div
+    class="absolute shadow-xl w-16 h-16 rounded-full bg-secondary z-21 bottom-1 right-0 flex items-center justify-center"
+  >
+    <button
+      class="text-secondary-foreground/80 hover:text-secondary-foreground hover:scale-105 myTransition"
+    >
+      <lucide-icon [img]="cartIcon" class="w-8 h-8"></lucide-icon>
+    </button>
+  </div>
+</div>
