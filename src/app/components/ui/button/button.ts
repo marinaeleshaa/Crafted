@@ -34,9 +34,9 @@ export class Button {
       primary: 'bg-pop text-pop-foreground group-hover:shadow-lg group-hover:shadow-pop/25 ',
       outline:
         'border-2 border-pop/30 group-hover:border-pop text-pop group-hover:shadow-lg group-hover:shadow-pop/25',
-      ghost: 'text-pop  group-hover:text-pop-foreground group-hover:shadow-lg group-hover:shadow-pop/25',
-      link: 'text-primary  hover:text-pop',
-      icon: ' text-primary hover:text-pop p-0! ',
+      ghost: '  group-hover:text-pop-foreground group-hover:shadow-lg group-hover:shadow-pop/25',
+      link: 'text-foreground  hover:text-secondary-foreground',
+      icon: ' text-pop/80 hover:text-pop p-0! ',
     }[this.variant()];
   }
 
