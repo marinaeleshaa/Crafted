@@ -1,14 +1,14 @@
 <div
-  class="absolute   mt-2 bg-secondary rounded-xl shadow-xl border border-background overflow-hidden backdrop-blur-sm"
+  class="absolute mt-2 bg-secondary rounded-xl shadow-xl border border-background overflow-hidden backdrop-blur-sm"
   [class]="width() + ' ' + alignmentClasses"
 >
   <ul class="divide-y divide-background">
     @for (item of items(); track $index) {
-      <li
-        class="group px-4 py-3 hover:bg-pop/20 cursor-pointer transition-all duration-200 "
-      >
-        <a [href]=" item.href" class="flex items-center justify-between">
-          <span class="text-foreground group-hover:text-pop font-medium transition-colors">
+      <li class="group px-4 py-3 hover:bg-pop/20 cursor-pointer transition-all duration-200">
+        <a [href]="item.href" class="flex items-center gap-2 justify-between">
+          <span
+            class="text-foreground text-nowrap group-hover:text-pop font-medium transition-colors"
+          >
             {{ item.label }}</span
           >
           <svg
@@ -28,7 +28,6 @@
       </li>
     }
 
-
-       <ng-content></ng-content>
+    <ng-content></ng-content>
   </ul>
 </div>
