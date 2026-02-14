@@ -1,7 +1,8 @@
-<app-button (click)="toggleMode()" variant="icon" extraClasses="flex items-center" width="fit" >
+<app-button (click)="toggleMode()" variant="icon" extraClasses="flex text-foreground! hover:text-secondary-foreground! items-start" width="full">
+  <span>{{ mode() === 'light' ? 'Dark Mode' : 'Light Mode' }}</span>
   @if (mode() === 'light') {
-  <lucide-icon [name]="moonIcon" class="w-6 h-6"></lucide-icon>
+    <lucide-icon [name]="moonIcon" class="w-6 h-6"></lucide-icon>
   } @else {
-  <lucide-icon [name]="sunIcon" class="w-6 h-6"></lucide-icon>
+    <lucide-icon [name]="sunIcon" class="w-6 h-6"></lucide-icon>
   }
 </app-button>
