@@ -16,22 +16,28 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { SelectIsAuthenticated } from '../../../store/auth/auth.selectors';
 import * as AuthActions from '../../../store/auth/auth.actions';
+import { SearchInput } from '../search-input/search-input';
 
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [CommonModule, RouterModule, ModeToggle, LucideAngularModule, Button, Dropdown],
+  imports: [
+    CommonModule,
+    RouterModule,
+    ModeToggle,
+    LucideAngularModule,
+    Button,
+    Dropdown,
+    SearchInput,
+  ],
   templateUrl: './navbar.html',
   styleUrls: ['./navbar.css'],
 })
 export class Navbar implements OnInit {
   // mobileMenuOpen = false;
-  readonly icon = TextAlignJustify;
-  readonly filterIcon = ListFilter;
   readonly Heart = Heart;
   readonly Cart = ShoppingCartIcon;
   readonly User = User;
-  dropdownOpen = false;
   profileMenuOpen = false;
   isAuthenticated$!: Observable<boolean>;
 
@@ -47,21 +53,8 @@ export class Navbar implements OnInit {
 
     // ? Close dropdowns if clicked outside
     if (!target.closest('.dropdown-wrapper')) {
-      this.dropdownOpen = false;
       this.profileMenuOpen = false;
     }
-  }
-
-  toggleDropdown(event: Event) {
-    event.stopPropagation();
-    this.dropdownOpen = !this.dropdownOpen;
-  }
-
-  closeDropdown() {
-    setTimeout(() => {
-      this.profileMenuOpen = false;
-      this.dropdownOpen = false;
-    }, 200);
   }
 
   toggleProfileMenu(event: Event) {
