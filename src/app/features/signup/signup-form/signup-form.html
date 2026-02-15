@@ -4,8 +4,10 @@
     <div class="bg-white/20 backdrop-blur-lg rounded-2xl shadow-xl p-6 sm:p-8 gap-4 flex flex-col">
       <!-- Header -->
       <div class="text-center">
-        <h1 class="text-3xl font-bold text-background mb-2">Not A Member Yet!</h1>
-        <p class="text-secondary">Sign up to create an account</p>
+        <h1 class="text-4xl md:text-5xl font-bold text-secondary font-title mb-2">
+          Not A Member Yet!
+        </h1>
+        <p class="text-secondary">Sign up to create your account</p>
       </div>
 
       <!-- Login Form -->
@@ -77,10 +79,10 @@
       </form>
 
       <!-- Sign Up Link -->
-      <div class="text-center">
-        <p class="text-sm text-light/80">
+      <div class=" text-center">
+        <p class="text-sm text-secondary flex items-center justify-center ">
           Already have an account?
-          <app-button routerLink="/login" variant="link" extraClasses="text-light/80!">
+          <app-button variant="link" routerLink="/login" extraClasses="text-secondary! hover:text-secondary-foreground! underline">
             Sign in
           </app-button>
         </p>
