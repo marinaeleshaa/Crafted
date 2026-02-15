@@ -12,6 +12,11 @@ export const routes: Routes = [
         loadComponent: () => import('./pages/home-page/home-page').then((m) => m.HomePage),
         title: 'Crafted | Home',
       },
+      {
+        path: 'navMenu',
+        loadComponent: () =>
+          import('./pages/nav-menu-page/nav-menu-page').then((m) => m.NavMenuPage),
+      },
     ],
   },
   {
@@ -23,11 +28,12 @@ export const routes: Routes = [
         path: 'login',
         loadComponent: () => import('./pages/login-page/login-page').then((m) => m.LoginPage),
         title: 'Crafted | Login',
-      },{
+      },
+      {
         path: 'signup',
         loadComponent: () => import('./pages/signup-page/signup-page').then((m) => m.SignupPage),
         title: 'Crafted | Sign Up',
-      }
+      },
     ],
   },
 ];

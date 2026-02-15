@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, signal, OnInit } from '@angular/core';
+import { Component, signal, OnInit, input } from '@angular/core';
 import { LucideAngularModule, Moon, Sun } from 'lucide-angular';
 import { Button } from '../../ui/button/button';
 
@@ -13,6 +13,7 @@ type ThemeMode = 'light' | 'dark';
 })
 export class ModeToggle implements OnInit {
   mode = signal<ThemeMode>('dark');
+  text = input<boolean>(true);
 
   sunIcon = Sun;
   moonIcon = Moon;
