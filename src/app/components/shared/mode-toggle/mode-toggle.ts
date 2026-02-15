@@ -1,7 +1,9 @@
-import {  CommonModule } from '@angular/common';
-import { Component,  signal, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { Component, signal, OnInit, input } from '@angular/core';
 import { LucideAngularModule, Moon, Sun } from 'lucide-angular';
-import { Button } from "../../ui/button/button";
+import { Button } from '../../ui/button/button';
+
+type ThemeMode = 'light' | 'dark';
 @Component({
   selector: 'app-mode-toggle',
   imports: [LucideAngularModule, CommonModule, Button],
@@ -10,13 +12,14 @@ import { Button } from "../../ui/button/button";
   styleUrls: ['./mode-toggle.css'],
 })
 export class ModeToggle implements OnInit {
-  mode = signal<'light' | 'dark'>('light');
+  mode = signal<ThemeMode>('dark');
+  text = input<boolean>(true);
 
   sunIcon = Sun;
   moonIcon = Moon;
 
   ngOnInit(): void {
-    const savedMode = localStorage.getItem('mode') as 'light' | 'dark' ;
+    const savedMode = localStorage.getItem('mode') as 'light' | 'dark';
     if (savedMode) this.mode.set(savedMode);
   }
 

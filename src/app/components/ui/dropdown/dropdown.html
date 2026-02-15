@@ -1,18 +1,18 @@
 <div
-  class="absolute   mt-2 bg-secondary rounded-xl shadow-xl border border-background overflow-hidden backdrop-blur-sm"
-  [class]="width() + ' ' + alignmentClasses"
+  class="absolute mt-2 rounded-xl shadow-xl border border-background overflow-hidden backdrop-blur-sm"
+  [ngClass]="[width(), alignmentClasses, variantClasses]"
 >
   <ul class="divide-y divide-background">
     @for (item of items(); track $index) {
-      <li
-        class="group px-4 py-3 hover:bg-pop/20 cursor-pointer transition-all duration-200 "
-      >
-        <a [href]=" item.href" class="flex items-center justify-between">
-          <span class="text-foreground group-hover:text-pop font-medium transition-colors">
+      <li class="group px-4 py-3 hover:bg-pop/20 cursor-pointer transition-all duration-200">
+        <a [href]="item.href" class="flex items-center gap-4 justify-between">
+          <span
+            class="text-foreground text-nowrap group-hover:text-pop font-medium transition-colors"
+          >
             {{ item.label }}</span
           >
           <svg
-            class="w-4 h-4 group-hover:text-pop opacity-0 group-hover:opacity-100 transform -translate-x-2 group-hover:translate-x-0 transition-all duration-200"
+            class="w-4 h-4 group-hover:text-pop text-foreground  transform -translate-x-2 group-hover:translate-x-0 transition-all duration-200"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -28,7 +28,6 @@
       </li>
     }
 
-
-       <ng-content></ng-content>
+    <ng-content></ng-content>
   </ul>
 </div>

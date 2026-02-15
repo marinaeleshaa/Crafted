@@ -1,7 +1,17 @@
-<app-button (click)="toggleMode()" variant="icon" extraClasses="flex items-center" width="fit" >
-  @if (mode() === 'light') {
-  <lucide-icon [name]="moonIcon" class="w-6 h-6"></lucide-icon>
-  } @else {
-  <lucide-icon [name]="sunIcon" class="w-6 h-6"></lucide-icon>
-  }
+<app-button
+  (click)="toggleMode()"
+  variant="icon"
+  extraClasses=" text-foreground!   hover:text-secondary-foreground!  "
+  width="full"
+>
+  <div class="flex w-full items-center justify-between gap-2">
+    @if (text()) {
+      <span>{{ mode() === 'light' ? 'Dark Mode' : 'Light Mode' }}</span>
+    }
+    @if (mode() === 'light') {
+      <lucide-icon [name]="moonIcon" class="w-6 h-6"></lucide-icon>
+    } @else {
+      <lucide-icon [name]="sunIcon" class="w-6 h-6"></lucide-icon>
+    }
+  </div>
 </app-button>

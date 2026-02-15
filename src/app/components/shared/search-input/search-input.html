@@ -1,0 +1,42 @@
+<div class="relative bg-pop/10 rounded-full dropdown-wrapper" (click)="toggleOverlay()">
+  <!-- <input
+    type="text"
+    placeholder="Search..."
+    class="rounded-full cursor-pointer md:w-sm px-10 py-2 placeholder:text-foreground/80 focus:outline-none focus:ring-2 focus:ring-pop"
+  /> -->
+
+  <div
+    class="rounded-full text-foreground/50 cursor-pointer md:w-sm px-10 py-2 placeholder:text-foreground/80 focus:outline-none focus:ring-2"
+  >
+    Search...
+  </div>
+
+  <button class="absolute right-2 top-1/2 transform -translate-y-1/2">
+    <lucide-icon
+      [name]="searchIcon"
+      class="w-6 h-6 text-pop cursor-pointer myTransition"
+    ></lucide-icon>
+  </button>
+
+  <button class="absolute left-2 top-1/2 transform -translate-y-1/2">
+    <lucide-icon [name]="icon" class="w-6 h-6 text-pop cursor-pointer myTransition"></lucide-icon>
+  </button>
+
+  @if (dropdownOpen) {
+    <app-dropdown
+      [items]="[
+        { label: 'Phone Cover', href: '/' },
+        { label: 't-shirts', href: '/' },
+        { label: 'mugs', href: '/' },
+      ]"
+    ></app-dropdown>
+  }
+</div>
+
+<!-- <button (click)="toggleOverlay()">toggle</button> -->
+
+<!-- search pop up  -->
+
+@if (isOverlayOpen()) {
+  <app-search-input-overlay (closeOverlayEvent)="toggleOverlay()"></app-search-input-overlay>
+}

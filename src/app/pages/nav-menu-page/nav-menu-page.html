@@ -1,0 +1,16 @@
+<div class="w-(--myWidth) mx-auto relative md:hidden">
+  <app-dropdown
+    [items]="[
+      { label: 'Profile', href: '/profile' },
+      { label: 'Orders History', href: '/' },
+      { label: 'My Designs Studio', href: '/' },
+    ]"
+    width="w-full"
+    align="left"
+    variant="transparent"
+  >
+    <li class="group px-2 py-3 transition-all duration-200">
+      <app-button (click)="logout()" variant="primary" width="full">Sign me out</app-button>
+    </li>
+  </app-dropdown>
+</div>

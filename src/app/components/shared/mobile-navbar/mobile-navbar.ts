@@ -24,7 +24,7 @@ export class MobileNavbar implements OnInit {
 
   navItems = [
     { label: 'Home', link: '/', icon: House },
-    { label: 'You', link: this.isAuthenticated ? '/profile' : '/login', icon: User },
+    { label: 'You', link: this.isAuthenticated ? '/navMenu' : '/login', icon: User },
     { label: 'Cart', link: '/cart', icon: ShoppingCart },
     { label: 'Fav', link: '/favorites', icon: Heart },
   ];
@@ -32,7 +32,7 @@ export class MobileNavbar implements OnInit {
   updateNavItems() {
     this.navItems = [
       { label: 'Home', link: '/', icon: House },
-      { label: 'You', link: this.isAuthenticated ? '/profile' : '/login', icon: User },
+      { label: 'You', link: this.isAuthenticated ? '/navMenu' : '/login', icon: User },
       { label: 'Cart', link: '/cart', icon: ShoppingCart },
       { label: 'Fav', link: '/favorites', icon: Heart },
     ];
