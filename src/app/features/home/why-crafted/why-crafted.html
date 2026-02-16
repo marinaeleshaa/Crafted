@@ -1,4 +1,4 @@
-<section>
+<section class="relative">
   <!-- Heading -->
   <div class="w-fit relative mx-auto">
     <h2 class="text-4xl md:text-5xl font-bold font-title text-center mb-6">Why Crafted?</h2>
@@ -71,18 +71,37 @@
     </svg>
   </div>
 
-  <div class="grid grid-cols-1  sm:grid-cols-3 md:grid-cols-3 xl:grid-cols-6 gap-2">
+  <!-- Left Arrow (hidden on mobile, visible on md+) -->
+  <button
+    #leftArrow
+    (click)="scrollLeft()"
+    [class.opacity-0]="!canScrollLeft"
+    [class.pointer-events-none]="!canScrollLeft"
+    class="block absolute left-4 top-2/3 -translate-y-1/2 z-10 bg-pop/80 hover:bg-pop text-white rounded-full p-3 transition-all duration-300 hover:scale-110 shadow-lg"
+    aria-label="Scroll left"
+  >
+    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+    </svg>
+  </button>
+
+  <!-- Scrollable Container -->
+  <div
+    #scrollContainer
+    (scroll)="onScroll()"
+    class="flex overflow-x-scroll scrollbar-hide overflow-y-hidden scroll-smooth"
+  >
     @for (point of points; track $index) {
       <!-- WRAPPER -->
       <div
-        class="group drop-shadow-[0_0px_0px_rgba(246,143,95,0.3)] hover:drop-shadow-[0_0px_10px_rgba(246,143,95,0.6)] transition-all duration-500"
+        class="group drop-shadow-[0_0px_0px_rgba(246,143,95,0.3)] hover:drop-shadow-[0_0px_10px_rgba(246,143,95,0.6)] transition-all duration-500 shrink-0"
       >
         <!-- BLOB -->
         <div
           class="blob bg-secondary-foreground/70 flex items-center justify-center p-2 transition-all duration-500 group-hover:rotate-10"
         >
           <div
-            class="text-secondary-foreground bg-secondary rounded-[40px] p-4 max-w-[70%] text-center flex flex-col justify-evenly items-center text-base font-medium min-h-32.5 text-balance  group-hover:scale-105 transition-all duration-500 group-hover:-rotate-10"
+            class="text-secondary-foreground bg-secondary rounded-[40px] p-4 max-w-[70%] text-center flex flex-col justify-evenly items-center text-base font-medium min-h-32.5 text-balance group-hover:scale-105 transition-all duration-500 group-hover:-rotate-10"
           >
             <lucide-angular
               [img]="point.icon"
@@ -97,4 +116,20 @@
       </div>
     }
   </div>
+
+  <!-- Right Arrow (hidden on mobile, visible on md+) -->
+  <button
+    #rightArrow
+    (click)="scrollRight()"
+    [class.opacity-0]="!canScrollRight"
+    [class.pointer-events-none]="!canScrollRight"
+    class="block absolute right-4 top-2/3 -translate-y-1/2 z-10 bg-pop/80 hover:bg-pop text-white rounded-full p-3 transition-all duration-300 hover:scale-110 shadow-lg"
+    aria-label="Scroll right"
+  >
+    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+    </svg>
+  </button>
+
+  <!-- <p class="text-pop text-center animate-bounce">more details ></p> -->
 </section>
