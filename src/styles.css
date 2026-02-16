@@ -17,5 +17,16 @@ button , a {
   transition: all 0.3s ease-in-out;
 }
 
+/* hide scrollbar */
+.scrollbar-hide {
+  -ms-overflow-style: none;  /* IE & Edge */
+  scrollbar-width: none;     /* Firefox */
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;             /* Chrome, Safari */
+}
+
+
 
 
