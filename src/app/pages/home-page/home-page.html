@@ -3,9 +3,9 @@
   <app-why-crafted></app-why-crafted>
 
   <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-10">
-    <app-card></app-card>
-    <app-card></app-card>
-    <app-card></app-card>
-    <app-card></app-card>
+    @for (item of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]; track $index) {
+      <app-card routerLink="/product/1"></app-card>
+    }
+   
   </div>
 </div>
