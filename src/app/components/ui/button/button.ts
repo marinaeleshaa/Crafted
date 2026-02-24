@@ -12,7 +12,7 @@ export class Button {
   width = input<'fit' | 'full'>('fit');
   variant = input<'primary' | 'secondary' |'pop' | 'outline' | 'ghost' | 'link' | 'icon'>('primary');
   rounded = input<'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' | 'full'>('xl');
-  size = input<'sm' | 'md' | 'lg'>('md');
+  size = input< 'xs' |'sm' | 'md' | 'lg'>('md');
   disabled = input<boolean>(false);
   type = input<'button' | 'submit' | 'reset'>('button');
   textTransform = input<'uppercase' | 'lowercase' | 'capitalize' | 'normal-case'>('capitalize');
@@ -55,6 +55,7 @@ export class Button {
 
   get sizeClass() {
     return {
+      xs: 'px-2 py-1 text-xs',
       sm: 'px-3 py-1.5 text-sm',
       md: 'px-4 py-2 text-base',
       lg: 'px-5 py-3 text-lg',
