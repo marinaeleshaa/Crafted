@@ -1,5 +1,5 @@
 <nav class="fixed w-full bg-background z-50 backdrop-blur-2xl py-2">
-  <div class="flex justify-between items-center  w-(--myWidth) mx-auto">
+  <div class="flex justify-between items-center w-(--myWidth) mx-auto">
     <div class="flex items-center justify-between md:gap-4 grow md:grow-0">
       <!-- Logo -->
       <div class="flex items-center gap-6">
@@ -11,7 +11,7 @@
 
       <div class="flex items-center gap-2">
         <!-- search input -->
-      <app-search-input></app-search-input>
+        <app-search-input></app-search-input>
 
         <!-- mode toggle -->
         <app-mode-toggle class="md:hidden" [text]="false"></app-mode-toggle>
@@ -48,8 +48,9 @@
               ]"
               width="w-fit"
               align="right"
+              (click)="closeProfileMenu()"
             >
-              <li class="group px-4 py-3 transition-all  duration-200">
+              <li class="group px-4 py-3 transition-all duration-200">
                 <app-mode-toggle></app-mode-toggle>
               </li>
               <li class="group px-2 py-3 transition-all duration-200">

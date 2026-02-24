@@ -1,5 +1,5 @@
 <button
-  class="group relative flex justify-center items-center font-semibold overflow-hidden myTransition hover:scale-105"
+  class="group relative  active:scale-[0.98] tracking-wider flex justify-center items-center font-semibold overflow-hidden myTransition hover:scale-102"
   [class]="allClasses()"
   [type]="type()"
   [disabled]="disabled()"
@@ -7,9 +7,15 @@
   <div class="relative z-10 w-full flex items-center h-full justify-center gap-2 text-nowrap">
     <ng-content></ng-content>
   </div>
-  @if (variant() === 'primary' || variant() === 'ghost') {
+  @if (variant() === 'primary' || variant() === 'ghost' || variant() === 'pop') {
     <span
       class="absolute inset-0 bg-linear-to-r from-primary/70 duration-700! to-pop opacity-0 group-hover:opacity-100 myTransition"
+    ></span>
+  }
+
+  @if (variant() === 'secondary' || variant() === 'ghost' ) {
+    <span
+      class="absolute inset-0 bg-linear-to-r from-foreground/40 duration-700! to-primary/10 opacity-0 group-hover:opacity-100 myTransition"
     ></span>
   }
 </button>

@@ -62,6 +62,10 @@ export class Navbar implements OnInit {
     this.profileMenuOpen = !this.profileMenuOpen;
   }
 
+  closeProfileMenu() {
+    this.profileMenuOpen = false;
+  }
+
   logout() {
     this.store.dispatch(AuthActions.LogoutAction());
   }

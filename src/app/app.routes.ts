@@ -17,6 +17,14 @@ export const routes: Routes = [
         loadComponent: () =>
           import('./pages/nav-menu-page/nav-menu-page').then((m) => m.NavMenuPage),
       },
+      {
+        path: 'product/:id',
+        loadComponent: () =>
+          import('./pages/product-details-page/product-details-page').then(
+            (m) => m.ProductDetailsPage,
+          ),
+        title: 'Crafted | Product',
+      },
     ],
   },
   {
