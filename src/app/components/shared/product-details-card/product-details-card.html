@@ -1,146 +1,133 @@
- <main class="relative grid grid-cols-1  md:grid-cols-12 min-h-[90vh] gap-0 overflow-hidden">
-    <!-- LEFT PANEL: Details Column -->
-    <div
-      class=" md:col-span-6 xl:col-span-4 flex flex-col justify-between py-8 px-4 lg:px-6 order-2 md:order-1 gap-4 "
-    >
-      <!-- Top: Name + Wishlist -->
-      <div class="space-y-1 ">
-        <!-- <p class="text-xs uppercase tracking-[0.3em] text-foreground/40 font-medium">New Arrival</p> -->
-        <div class="flex items-start justify-between gap-4">
-          <h1
-            class="text-5xl md:text-6xl xl:text-7xl font-title font-bold capitalize  tracking-wide"
-          >
-            product name
-          </h1>
-          <app-button variant="icon" size="lg" class="mt-1 shrink-0">
-            <lucide-icon [img]="HeartIcon" class="w-6 h-6 md:w-7 md:h-7"></lucide-icon>
-          </app-button>
-        </div>
-      </div>
-
-      <!-- Size selector -->
-      <div class="space-y-2">
-        <!-- <p class="text-xs uppercase tracking-[0.25em] text-foreground/40">Select Size</p> -->
-        <div class="flex flex-wrap items-center gap-2">
-          @for (item of sizes; track $index) {
-            <div
-              class="w-12 h-12 rounded-2xl cursor-pointer bg-secondary text-secondary-foreground flex items-center justify-center text-sm font-semibold hover:bg-pop hover:text-pop-foreground transition-all duration-200"
-            >
-              {{ item }}
-            </div>
-          }
-        </div>
-      </div>
-
-      <!-- Color selector -->
-      <div class="space-y-2">
-        <!-- <p class="text-xs uppercase tracking-[0.25em] text-foreground/40">Color</p> -->
-        <div class="flex items-center gap-3">
-          @for (item of colors; track $index) {
-            <div
-              class="relative w-8 h-8 rounded-full cursor-pointer ring-2 ring-transparent hover:ring-pop ring-offset-2 ring-offset-background transition-all duration-200"
-              [ngClass]="'bg-' + item"
-            ></div>
-          }
-        </div>
-      </div>
-
-      <!-- Price inline with name -->
-      <div class="pt-2">
-        <span class="text-secondary-foreground text-2xl font-bold">$</span>
-        <span class="text-5xl lg:text-6xl font-bold text-secondary-foreground">100</span>
-      </div>
-
-      <!-- Add to Cart -->
-      <div class="flex flex-col flex-1  gap-2">
-        <app-button class="" size="lg" width="full">
-          <lucide-angular [img]="CartIcon"></lucide-angular>
-          add to cart
+<main class="relative grid grid-cols-1 md:grid-cols-12 min-h-[90vh] gap-0 overflow-hidden">
+  <!-- LEFT PANEL: Details Column -->
+  <div
+    class="md:col-span-6 xl:col-span-4 flex flex-col justify-between py-8 px-4 lg:px-6 order-2 md:order-1 gap-4"
+  >
+    <!-- Top: Name + Wishlist -->
+    <div class="space-y-1">
+      <!-- <p class="text-xs uppercase tracking-[0.3em] text-foreground/40 font-medium">New Arrival</p> -->
+      <div class="flex items-start justify-between gap-4">
+        <h1 class="text-5xl md:text-6xl xl:text-7xl font-title font-bold capitalize tracking-wide">
+          {{ product().name }}
+        </h1>
+        <app-button variant="icon" size="lg" class="mt-1 shrink-0">
+          <lucide-icon [img]="HeartIcon" class="w-6 h-6 md:w-7 md:h-7"></lucide-icon>
         </app-button>
-        <app-button class="" variant="secondary" size="lg" width="full">
-          <lucide-angular [img]="EditIcon"></lucide-angular>
-          Make It Yours</app-button
-        >
       </div>
     </div>
-<div class="hidden bg-pink-200 bg-pink-500"></div>
-    <!-- CENTER: 3D Hero Image — dominates the layout -->
-    <div
-      class="md:col-span-6 xl:col-span-5 order-1 lg:order-2 relative flex items-center justify-center py-8 px-4"
-    >
-      <!-- Decorative background glow -->
-      <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
-        <div class="w-[70%] h-[70%] rounded-full bg-primary/10 blur-[80px]"></div>
+
+    <!-- Size selector -->
+    <div class="space-y-2">
+      <!-- <p class="text-xs uppercase tracking-[0.25em] text-foreground/40">Select Size</p> -->
+      <div class="flex flex-wrap items-center gap-2">
+        @for (size of product().sizes; track $index) {
+          <div
+            class="w-12 h-12 rounded-2xl cursor-pointer bg-secondary text-secondary-foreground flex items-center justify-center text-sm font-semibold hover:bg-pop hover:text-pop-foreground transition-all duration-200"
+          >
+            {{ size }}
+          </div>
+        }
       </div>
+    </div>
 
-      <!-- Main 3D image -->
-      <img
-        class="relative z-10 w-full max-h-[55vh] lg:max-h-[85vh] object-contain drop-shadow-2xl"
-        src="/white.png"
-        alt="product 3d view"
-      />
+    <!-- Color selector -->
+    <div class="space-y-2">
+      <!-- <p class="text-xs uppercase tracking-[0.25em] text-foreground/40">Color</p> -->
+      <div class="flex items-center gap-3">
+        @for (color of product().colors; track $index) {
+          <div
+            class="relative w-8 h-8 rounded-full cursor-pointer ring-2 ring-transparent hover:ring-pop ring-offset-2 ring-offset-background transition-all duration-200"
+            [ngClass]="'bg-' + color"
+          ></div>
+        }
+      </div>
+    </div>
 
-      <!-- Floating label -->
-      <div
-        class="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 bg-background/80 backdrop-blur-sm border border-secondary rounded-full px-5 py-2 flex items-center gap-2 whitespace-nowrap"
+    <!-- Price inline with name -->
+    <div class="pt-2">
+      <span class="text-secondary-foreground text-2xl font-bold">$</span>
+      <span class="text-5xl lg:text-6xl font-bold text-secondary-foreground">{{
+        product().price
+      }}</span>
+    </div>
+
+    <!-- Add to Cart -->
+    <div class="flex flex-col flex-1 gap-2">
+      <app-button class="" size="lg" width="full">
+        <lucide-angular [img]="CartIcon"></lucide-angular>
+        add to cart
+      </app-button>
+      <app-button class="" variant="secondary" size="lg" width="full">
+        <lucide-angular [img]="EditIcon"></lucide-angular>
+        Make It Yours</app-button
       >
-        <span class="w-2 h-2 rounded-full bg-primary animate-pulse inline-block"></span>
-        <span class="text-xs font-medium tracking-widest uppercase text-foreground/60"
-          >360° View</span
-        >
+    </div>
+  </div>
+  <div class="hidden bg-pink-200 bg-pink-500"></div>
+  <!-- CENTER: 3D Hero Image — dominates the layout -->
+  <div
+    class="md:col-span-6 xl:col-span-5 order-1 lg:order-2 relative flex items-center justify-center py-8 px-4"
+  >
+    <!-- Decorative background glow -->
+    <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+      <div class="w-[70%] h-[70%] rounded-full bg-primary/10 blur-[80px]"></div>
+    </div>
+
+    <!-- Main 3D image -->
+    <img
+      class="relative z-10 w-full max-h-[55vh] lg:max-h-[85vh] object-contain drop-shadow-2xl"
+      [src]="product().imageUrl"
+      alt="product 3d view"
+    />
+
+    <!-- Floating label -->
+    <div
+      class="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 bg-background/80 backdrop-blur-sm border border-secondary rounded-full px-5 py-2 flex items-center gap-2 whitespace-nowrap"
+    >
+      <span class="w-2 h-2 rounded-full bg-primary animate-pulse inline-block"></span>
+      <span class="text-xs font-medium tracking-widest uppercase text-foreground/60"
+        >360° View</span
+      >
+    </div>
+  </div>
+
+  <!-- RIGHT PANEL: Thumbnails + Description + Details -->
+  <div
+    class="md:col-span-12 lg:col-span-10 xl:col-span-3 flex flex-col justify-between py-8 px-4 lg:px-6 order-3 gap-6"
+  >
+    <!-- Vertical thumbnails -->
+    <div class="space-y-2">
+      <p class="text-xs uppercase tracking-[0.25em] text-foreground/40">Gallery</p>
+      <div class="flex flex-row gap-2 flex-wrap pb-1 lg:pb-0">
+        @for (img of product().gallery; track $index) {
+          <img
+            [src]="img"
+            alt="thumbnail"
+            class="w-16 h-16 lg:h-20 rounded-xl object-cover cursor-pointer shrink-0 opacity-60 hover:opacity-100 ring-2 ring-transparent hover:ring-pop transition-all duration-200"
+          />
+        }
       </div>
     </div>
 
-    <!-- RIGHT PANEL: Thumbnails + Description + Details -->
-    <div class=" md:col-span-12 lg:col-span-10 xl:col-span-3 flex flex-col justify-between py-8 px-4 lg:px-6 order-3 gap-6">
-      <!-- Vertical thumbnails -->
-      <div class="space-y-2">
-        <p class="text-xs uppercase tracking-[0.25em] text-foreground/40">Gallery</p>
-        <div class="flex flex-row gap-2 flex-wrap pb-1 lg:pb-0">
-          @for (item of images; track $index) {
-            <img
-              [src]="item"
-              alt="thumbnail"
-              class="w-16 h-16 lg:h-20 rounded-xl object-cover cursor-pointer shrink-0 opacity-60 hover:opacity-100 ring-2 ring-transparent hover:ring-pop transition-all duration-200"
-            />
-          }
-        </div>
-      </div>
-
-      <!-- Description -->
-      <div class="space-y-2">
-        <h3 class="text-xs uppercase tracking-[0.25em] text-foreground/40">About</h3>
-        <p class="text-sm text-foreground/70 leading-relaxed">
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quas rerum nulla quod excepturi
-          facilis tempore reprehenderit placeat amet officia provident.
-        </p>
-      </div>
-
-      <!-- Product details table -->
-      <div class="space-y-2 flex-1">
-        <h3 class="text-xs uppercase tracking-[0.25em] text-foreground/40">Details</h3>
-        <table class="w-full text-sm">
-          <tr class="border-b border-secondary h-9">
-            <td class="pr-3 text-foreground/50 capitalize">color</td>
-            <td class="text-foreground/80 truncate max-w-[120px]">black, white, red…</td>
-          </tr>
-          <tr class="border-b border-secondary h-9">
-            <td class="pr-3 text-foreground/50 capitalize">size</td>
-            <td class="text-foreground/80">XL</td>
-          </tr>
-          <tr class="border-b border-secondary h-9">
-            <td class="pr-3 text-foreground/50 capitalize">brand</td>
-            <td class="text-foreground/80">brand</td>
-          </tr>
-          <tr class="border-b border-secondary h-9">
-            <td class="pr-3 text-foreground/50 capitalize">material</td>
-            <td class="text-foreground/80">material</td>
-          </tr>
-          <tr class="border-b border-secondary h-9">
-            <td class="pr-3 text-foreground/50 capitalize">category</td>
-            <td class="text-foreground/80">category</td>
-          </tr>
-        </table>
-      </div>
+    <!-- Description -->
+    <div class="space-y-2">
+      <h3 class="text-xs uppercase tracking-[0.25em] text-foreground/40">About</h3>
+      <p class="text-sm text-foreground/70 leading-relaxed">
+        {{ product().description }}
+      </p>
     </div>
-  </main>
+
+    <!-- Product details table -->
+    <div class="space-y-2 flex-1">
+      <h3 class="text-xs uppercase tracking-[0.25em] text-foreground/40">Details</h3>
+      <table class="w-full text-sm">
+        @for (item of product().details; track $index) {
+          <tr class="border-b border-secondary h-9">
+            <td class="pr-3 text-foreground/50 capitalize">{{ item.title }}</td>
+            <td class="text-foreground/80">{{ item.description }}</td>
+          </tr>
+        }
+      </table>
+    </div>
+  </div>
+</main>
