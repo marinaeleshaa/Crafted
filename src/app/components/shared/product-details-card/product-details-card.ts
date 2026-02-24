@@ -1,18 +1,16 @@
 import { Component } from '@angular/core';
-import { GoBackBtn } from '../../components/shared/go-back-btn/go-back-btn';
+import { Button } from "../../ui/button/button";
+import { Heart, LucideAngularModule, ShoppingCart, SquarePen } from "lucide-angular";
 import { CommonModule } from '@angular/common';
-import { Button } from '../../components/ui/button/button';
-import { Heart, LucideAngularModule, ShoppingCart, SquarePen } from 'lucide-angular';
-import { ProductDetailsCard } from "../../components/shared/product-details-card/product-details-card";
 
 @Component({
-  selector: 'app-product-details-page',
-  imports: [GoBackBtn, CommonModule, Button, LucideAngularModule, ProductDetailsCard],
-  templateUrl: './product-details-page.html',
-  styleUrl: './product-details-page.css',
+  selector: 'app-product-details-card',
+  imports: [Button, LucideAngularModule , CommonModule],
+  templateUrl: './product-details-card.html',
+  styleUrl: './product-details-card.css',
 })
-export class ProductDetailsPage {
-  HeartIcon = Heart;
+export class ProductDetailsCard {
+ HeartIcon = Heart;
   CartIcon = ShoppingCart;
   EditIcon = SquarePen;
 
