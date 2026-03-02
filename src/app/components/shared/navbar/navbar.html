@@ -1,4 +1,4 @@
-<nav class="fixed w-full bg-background z-50 backdrop-blur-2xl py-2">
+<nav class="fixed w-full bg-background z-50  py-2">
   <div class="flex justify-between items-center w-(--myWidth) mx-auto">
     <div class="flex items-center justify-between md:gap-4 grow md:grow-0">
       <!-- Logo -->
@@ -11,7 +11,7 @@
 
       <div class="flex items-center gap-2">
         <!-- search input -->
-        <app-search-input></app-search-input>
+        <app-search-input (OpenOverlayEvent)="openSearch()" ></app-search-input>
 
         <!-- mode toggle -->
         <app-mode-toggle class="md:hidden" [text]="false"></app-mode-toggle>
@@ -69,3 +69,10 @@
     </div>
   </div>
 </nav>
+
+
+@if (isSearchOpen) {
+  <app-search-input-overlay
+    (closeOverlayEvent)="closeSearch()">
+  </app-search-input-overlay>
+}

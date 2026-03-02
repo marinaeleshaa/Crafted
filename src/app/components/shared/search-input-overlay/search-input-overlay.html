@@ -1,6 +1,8 @@
-<div class="fixed  inset-0 w-full h-screen z-99 bg-dark/90 flex justify-center items-start">
+<div
+  class="fixed inset-0 w-full h-screen z-99 bg-linear-to-br backdrop-blur-xs from-black/70 to-primary/80 flex justify-center items-start"
+>
   <div class="flex gap-4 mt-20 w-full justify-center items-center">
-    <div class="relative bg-secondary rounded-xl dropdown-wrapper  w-2/3">
+    <div class="relative bg-secondary rounded-xl dropdown-wrapper w-2/3">
       <input
         type="text"
         placeholder="Search..."
@@ -36,11 +38,8 @@
       }
     </div>
 
-    <app-button variant="icon" (click)="closeOverlay()">
-      <lucide-icon
-        [img]="closeIcon"
-        class=" size-8 "
-      ></lucide-icon>
+    <app-button variant="pop" size="sm" (click)="closeOverlay()">
+      <lucide-icon [img]="closeIcon" class="size-8"></lucide-icon>
     </app-button>
   </div>
 </div>
