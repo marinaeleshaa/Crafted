@@ -1,15 +1,15 @@
 <div class="flex items-center justify-center px-4">
   <div class="w-full max-w-md">
     <!-- Login Card -->
-    <div class="bg-foreground/30 backdrop-blur-lg rounded-2xl shadow-xl p-6 sm:p-8">
+    <div class="bg-background/40 backdrop-blur-lg rounded-2xl my-8 shadow-xl p-6 sm:p-8">
       <!-- Header -->
       <div class="text-center mb-8">
-        <h1 class="text-4xl md:text-5xl font-bold text-secondary font-title mb-2">Welcome Back</h1>
-        <p class="text-secondary">Sign in to your account</p>
+        <h1 class="text-4xl md:text-5xl font-bold text-foreground font-title mb-2">Welcome Back</h1>
+        <p class="text-foreground/80">Sign in to your account</p>
       </div>
 
       <!-- Login Form -->
-      <form (submit)="onSubmit($event)" class="flex flex-col gap-6">
+      <form (submit)="onSubmit($event)" class="flex flex-col gap-8">
         <!-- Username Input -->
         <app-input
           label="Username"
@@ -73,9 +73,9 @@
 
       <!-- Sign Up Link -->
       <div class="mt-6 text-center   ">
-        <p class="text-sm text-secondary flex items-center justify-center">
+        <p class="text-sm text-foreground/80 flex items-center justify-center">
           Don't have an account?
-          <app-button variant="link" routerLink="/signup" extraClasses="text-secondary! hover:text-secondary-foreground! underline">
+          <app-button variant="link" routerLink="/signup" extraClasses="text-primary! hover:text-secondary-foreground! underline">
             Sign up
           </app-button>
         </p>

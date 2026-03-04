@@ -12,6 +12,7 @@ import { RouterLink } from '@angular/router';
 export class SignupForm {
   // Form fields
   username = signal<string>('');
+  email = signal<string>('');
   password = signal<string>('');
   confirmPassword = signal<string>('');
 
@@ -20,6 +21,7 @@ export class SignupForm {
   formError = signal('');
   successMessage = signal('');
   usernameTouched = signal<boolean>(false);
+  emailTouched = signal<boolean>(false);
   passwordTouched = signal(false);
   confirmPasswordTouched = signal(false);
   usernameError = computed(() => {
@@ -27,6 +29,14 @@ export class SignupForm {
       return 'Username is required';
     } else if (this.username().length > 0 && this.username().length < 3) {
       return 'Username must be at least 3 characters';
+    }
+    return '';
+  });
+  emailError = computed(() => {
+    if (this.emailTouched() && this.email() === '') {
+      return 'Email is required';
+    } else if (this.email().length > 0 && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(this.email())) {
+      return 'Please enter a valid email address';
     }
     return '';
   });
@@ -50,9 +60,11 @@ export class SignupForm {
   isValid = computed(() => {
     return (
       this.usernameError() === '' &&
+      this.emailError() === '' &&
       this.passwordError() === '' &&
       this.confirmPasswordError() === '' &&
       this.username() !== '' &&
+      this.email() !== '' &&
       this.password() !== '' &&
       this.confirmPassword() !== ''
     );
@@ -66,6 +78,7 @@ export class SignupForm {
     // Reset errors
 
     this.usernameTouched.set(false);
+    this.emailTouched.set(false);
     this.passwordTouched.set(false);
     this.confirmPasswordTouched.set(false);
     this.formError.set('');
@@ -81,6 +94,7 @@ export class SignupForm {
 
       console.log('Login credentials:', {
         username: this.username(),
+        email: this.email(),
         password: this.password(),
         confirmPassword: this.confirmPassword(),
       });
@@ -88,6 +102,7 @@ export class SignupForm {
       // In a real app, you would navigate to the dashboard here
       // this.router.navigate(['/dashboard']);
       this.username.set('');
+      this.email.set('');
       this.password.set('');
       this.confirmPassword.set('');
     }, 1500);

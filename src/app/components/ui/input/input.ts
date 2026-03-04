@@ -68,17 +68,17 @@ export class Input {
   }
 
   labelClasses() {
-    const base = 'text-sm opacity-0 font-medium';
-    const color = 'text-background';
-    const floated = '-top-6 left-2 opacity-100  text-lg';
-    const resting = 'top-3 left-4 text-sm';
+    const base = 'text-sm opacity-0 font-medium ';
+    const color = 'text-foreground/90!';
+    const floated = '-top-6 left-1 opacity-100   text-lg';
+    const resting = 'top-3 left-4 text-sm ';
 
     return `${base} ${color} ${this.shouldFloat() ? floated : resting}`;
   }
 
   inputClasses() {
     const baseClasses =
-      'w-full px-4 py-3 rounded-full transition-all outline-none duration-200 focus:ring-pop/30 focus:outline-none focus:ring-3 ';
+      'w-full px-4 py-3 rounded-xl transition-all outline-none duration-200 focus:ring-pop/30 focus:outline-none focus:ring-3 ';
     const normalClasses =
       'border-gray-300 bg-secondary/80 text-secondary-foreground placeholder-foreground/60 focus:border-blue-500 focus:ring-blue-500';
     const errorClasses =
