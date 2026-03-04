@@ -10,16 +10,16 @@
 
       <!-- Login Form -->
       <form (submit)="onSubmit($event)" class="flex flex-col gap-8">
-        <!-- Username Input -->
+        <!-- Email Input -->
         <app-input
-          label="Username"
-          [value]="username()"
-          (onTouched)="usernameTouched.set(true)"
-          (valueChange)="username.set($event)"
+          label="Email"
+          [value]="email()"
+          (onTouched)="emailTouched.set(true)"
+          (valueChange)="email.set($event)"
           type="text"
-          [error]="usernameError()"
-          name="username"
-          placeholder="Enter your username"
+          [error]="emailError()"
+          name="email"
+          placeholder="Enter your email"
           [required]="true"
           [disabled]="isLoading()"
         />
@@ -40,11 +40,14 @@
           />
 
           <!-- Forgot Password -->
-
           <app-button variant="link" size="sm" extraClasses="text-secondary/80">
             Forgot password?
           </app-button>
         </div>
+
+        @if (formError()) {
+          <p class="text-pop text-center -my-4 text-sm ">{{ formError() }}</p>
+        }
 
         <!-- Submit Button -->
         <app-button type="submit" width="full" [disabled]="!isValid()">
@@ -72,10 +75,14 @@
       </form>
 
       <!-- Sign Up Link -->
-      <div class="mt-6 text-center   ">
+      <div class="mt-6 text-center">
         <p class="text-sm text-foreground/80 flex items-center justify-center">
           Don't have an account?
-          <app-button variant="link" routerLink="/signup" extraClasses="text-primary! hover:text-secondary-foreground! underline">
+          <app-button
+            variant="link"
+            routerLink="/signup"
+            extraClasses="text-primary! hover:text-secondary-foreground! underline"
+          >
             Sign up
           </app-button>
         </p>

@@ -1,19 +1,25 @@
 export interface AuthState {
+  token: string | null;
   isAuthenticated: boolean;
-  userData?: {
+  user: {
+    id: string;
     username: string;
-    password: string;
-  };
+    email?: string;
+  } | null;
+  loading?: boolean;
+  error?: string | null;
 }
 
 export const getInitialAuthState = (): AuthState => {
-  const storedAuth = localStorage.getItem('auth');
-  return storedAuth
-    ? JSON.parse(storedAuth)
-    : {
-        isAuthenticated: false,
-        userData: undefined,
-      };
+  const token = localStorage.getItem('token');
+
+  return {
+    token,
+    isAuthenticated: !!token,
+    user: null, // هنجيبها من /me بعد كده
+    loading: false,
+    error: null,
+  };
 };
 
 export const initialAuthState: AuthState = getInitialAuthState();
