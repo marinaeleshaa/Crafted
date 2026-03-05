@@ -3,8 +3,15 @@ import { inject, Injectable } from '@angular/core';
 import { environment } from '../../../environment';
 
 interface ILoginResponse {
-  token: string;
-  user: { id: string; username: string };
+   success: boolean;
+   message: string;
+  data: {
+    user: {
+      id: string;
+      username: string;
+    };
+    token: string;
+  };
 }
 
 @Injectable({

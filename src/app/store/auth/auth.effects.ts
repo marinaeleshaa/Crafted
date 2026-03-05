@@ -21,7 +21,7 @@ export class AuthEffects {
           this.authService.loginService(email, password).pipe(
             // ? pipe is used to handle the response of loginService method
             map((response) =>
-              AuthActions.LoginSuccessAction({ user: response.user, token: response.token }),
+              AuthActions.LoginSuccessAction({ user: response.data.user, token: response.data.token }),
             ),
             catchError((error) =>
               of(
@@ -55,7 +55,7 @@ export class AuthEffects {
       switchMap(({ email, password, username }) =>
         this.authService.signupService(email, password, username).pipe(
           map((response) =>
-            AuthActions.SignupSuccessAction({ user: response.user, token: response.token }),
+            AuthActions.SignupSuccessAction({ user: response.data.user, token: response.data.token }),
           ),
           catchError((error) =>
             of(

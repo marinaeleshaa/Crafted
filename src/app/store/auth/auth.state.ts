@@ -4,7 +4,6 @@ export interface AuthState {
   user: {
     id: string;
     username: string;
-    email?: string;
   } | null;
   loading?: boolean;
   error?: string | null;
@@ -16,7 +15,7 @@ export const getInitialAuthState = (): AuthState => {
   return {
     token,
     isAuthenticated: !!token,
-    user: null, // هنجيبها من /me بعد كده
+    user: null,
     loading: false,
     error: null,
   };
