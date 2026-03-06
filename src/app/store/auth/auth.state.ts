@@ -1,10 +1,9 @@
+import { IUser } from "../../interface/iuser";
+
 export interface AuthState {
   token: string | null;
   isAuthenticated: boolean;
-  user: {
-    id: string;
-    username: string;
-  } | null;
+  user:IUser | null;
   loading?: boolean;
   error?: string | null;
 }

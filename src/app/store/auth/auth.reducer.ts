@@ -15,10 +15,9 @@ export const AuthReducer = createReducer(
   })),
 
   // ? on login/signup success save token and user data, turn off loading
-  on(AuthActions.LoginSuccessAction, AuthActions.SignupSuccessAction, (state, { token, user }) => ({
+  on(AuthActions.LoginSuccessAction, AuthActions.SignupSuccessAction, (state, { token }) => ({
     ...state,
     token,
-    user,
     isAuthenticated: true,
     loading: false,
     error: null,
@@ -37,5 +36,18 @@ export const AuthReducer = createReducer(
     isAuthenticated: false,
     loading: false,
     error: null,
+  })),
+
+  on(AuthActions.GetUserSuccessAction, (state, { user }) => ({
+    ...state,
+    user,
+    isAuthenticated: true,
+  })),
+
+  on(AuthActions.GetUserFailureAction, (state, { error }) => ({
+    ...state,
+    user: null,
+    isAuthenticated: false,
+    error,
   })),
 );

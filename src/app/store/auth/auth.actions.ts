@@ -1,4 +1,5 @@
 import { createAction, props } from '@ngrx/store';
+import { IUser } from '../../interface/iuser';
 
 // ? actions is just a msg that describes what happened in the app, it has a type and optional payload
 
@@ -37,3 +38,14 @@ export const SignupFailureAction = createAction(
 
 // todo=> logout
 export const LogoutAction = createAction('[Auth] Logout');
+
+// todo=> get user
+export const GetUserAction = createAction('[Auth] Get User');
+export const GetUserSuccessAction = createAction(
+  '[Auth] Get User Success',
+  props<{ user: IUser }>(),
+);
+export const GetUserFailureAction = createAction(
+  '[Auth] Get User Failure',
+  props<{ error: string }>(),
+);

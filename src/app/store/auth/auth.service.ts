@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { environment } from '../../../environment';
+import { IUser } from '../../interface/iuser';
 
 interface ILoginResponse {
    success: boolean;
@@ -34,5 +35,11 @@ export class AuthService {
       password,
       username,
     });
+  }
+
+  getMeService() {
+    return this.http.get<{ success: boolean; message: string; data: { user: IUser } }>(
+      `${this.baseUrl}/user/me`,
+    );
   }
 }

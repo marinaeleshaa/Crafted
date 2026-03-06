@@ -21,7 +21,10 @@ export class AuthEffects {
           this.authService.loginService(email, password).pipe(
             // ? pipe is used to handle the response of loginService method
             map((response) =>
-              AuthActions.LoginSuccessAction({ user: response.data.user, token: response.data.token }),
+              AuthActions.LoginSuccessAction({
+                user: response.data.user,
+                token: response.data.token,
+              }),
             ),
             catchError((error) =>
               of(
@@ -35,16 +38,15 @@ export class AuthEffects {
     ),
   );
 
-  loginSuccess$ = createEffect(
-    () =>
-      this.actions$.pipe(
-        ofType(AuthActions.LoginSuccessAction),
-        tap(({ token }) => {
-          // ? tap is used for side effects like localStorage and don't affect the state , took token from action payload
-          localStorage.setItem('token', token); // نخزن الـ token
-        }),
-      ),
-    { dispatch: false }, // effect ده مش هيعمل dispatch لأي action
+  loginSuccess$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(AuthActions.LoginSuccessAction),
+      tap(({ token }) => {
+        // ? tap is used for side effects like localStorage and don't affect the state , took token from action payload
+        localStorage.setItem('token', token); // نخزن الـ token
+      }),
+      map(() => AuthActions.GetUserAction()),
+    ),
   );
 
   // todo=> effect for signup action
@@ -55,7 +57,10 @@ export class AuthEffects {
       switchMap(({ email, password, username }) =>
         this.authService.signupService(email, password, username).pipe(
           map((response) =>
-            AuthActions.SignupSuccessAction({ user: response.data.user, token: response.data.token }),
+            AuthActions.SignupSuccessAction({
+              user: response.data.user,
+              token: response.data.token,
+            }),
           ),
           catchError((error) =>
             of(
@@ -69,15 +74,14 @@ export class AuthEffects {
     ),
   );
 
-  signupSuccess$ = createEffect(
-    () =>
-      this.actions$.pipe(
-        ofType(AuthActions.SignupSuccessAction),
-        tap(({ token }) => {
-          localStorage.setItem('token', token);
-        }),
-      ),
-    { dispatch: false },
+  signupSuccess$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(AuthActions.SignupSuccessAction),
+      tap(({ token }) => {
+        localStorage.setItem('token', token);
+      }),
+      map(() => AuthActions.GetUserAction()),
+    ),
   );
 
   // todo=> effect for logout action
@@ -91,5 +95,29 @@ export class AuthEffects {
         }),
       ),
     { dispatch: false },
+  );
+
+  // todo=> effect for get user action
+
+  getUser$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(AuthActions.GetUserAction),
+      switchMap(() =>
+        this.authService.getMeService().pipe(
+          map((response) =>
+            AuthActions.GetUserSuccessAction({
+              user: response.data.user,
+            }),
+          ),
+          catchError((error) =>
+            of(
+              AuthActions.GetUserFailureAction({
+                error: error.error?.message || 'Unknown error',
+              }),
+            ),
+          ),
+        ),
+      ),
+    ),
   );
 }
