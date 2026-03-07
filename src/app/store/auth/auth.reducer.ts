@@ -50,4 +50,9 @@ export const AuthReducer = createReducer(
     isAuthenticated: false,
     error,
   })),
+
+  on(AuthActions.ClearAuthErrorAction, (state) => ({
+    ...state,
+    error: null,
+  })),
 );

@@ -49,3 +49,6 @@ export const GetUserFailureAction = createAction(
   '[Auth] Get User Failure',
   props<{ error: string }>(),
 );
+
+// todo=> clear error
+export const ClearAuthErrorAction = createAction('[Auth] Clear Error');

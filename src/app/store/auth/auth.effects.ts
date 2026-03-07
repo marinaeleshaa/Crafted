@@ -19,6 +19,7 @@ export class AuthEffects {
           { email, password }, // ? switchMap is used to switch to another observable that is returned by loginService method of AuthService and decline the current observable, took email and password from action payload
         ) =>
           this.authService.loginService(email, password).pipe(
+
             // ? pipe is used to handle the response of loginService method
             map((response) =>
               AuthActions.LoginSuccessAction({
