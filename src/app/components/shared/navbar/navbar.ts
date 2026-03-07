@@ -17,6 +17,7 @@ import { Observable } from 'rxjs';
 import { SelectIsAuthenticated } from '../../../store/auth/auth.selectors';
 import * as AuthActions from '../../../store/auth/auth.actions';
 import { SearchInput } from '../search-input/search-input';
+import { SearchInputOverlay } from "../search-input-overlay/search-input-overlay";
 
 @Component({
   selector: 'app-navbar',
@@ -29,7 +30,8 @@ import { SearchInput } from '../search-input/search-input';
     Button,
     Dropdown,
     SearchInput,
-  ],
+    SearchInputOverlay
+],
   templateUrl: './navbar.html',
   styleUrls: ['./navbar.css'],
 })
@@ -68,5 +70,17 @@ export class Navbar implements OnInit {
 
   logout() {
     this.store.dispatch(AuthActions.LogoutAction());
+  }
+
+  isSearchOpen = false;
+
+  openSearch() {
+    this.isSearchOpen = true;
+    document.body.style.overflow = 'hidden';
+  }
+
+  closeSearch() {
+    this.isSearchOpen = false;
+    document.body.style.overflow = 'auto';
   }
 }

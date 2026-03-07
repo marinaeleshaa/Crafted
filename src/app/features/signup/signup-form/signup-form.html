@@ -1,16 +1,18 @@
 <div class="flex items-center justify-center px-4">
   <div class="w-full max-w-md">
-    <!-- Login Card -->
-    <div class="bg-white/20 backdrop-blur-lg rounded-2xl shadow-xl p-6 sm:p-8 gap-4 flex flex-col">
+    <!-- Signup Card -->
+    <div
+      class="bg-background/40 backdrop-blur-lg rounded-2xl my-8 shadow-xl p-6 sm:p-8 gap-4 flex flex-col"
+    >
       <!-- Header -->
       <div class="text-center">
-        <h1 class="text-4xl md:text-5xl font-bold text-secondary font-title mb-2">
+        <h1 class="text-4xl md:text-5xl font-bold text-foreground font-title mb-2">
           Not A Member Yet!
         </h1>
-        <p class="text-secondary">Sign up to create your account</p>
+        <p class="text-foreground/80">Sign up to create your account</p>
       </div>
 
-      <!-- Login Form -->
+      <!-- Signup Form -->
       <form (submit)="onSubmit($event)" class="flex flex-col gap-6 mt-4">
         <!-- Username Input -->
         <app-input
@@ -22,6 +24,20 @@
           [error]="usernameError()"
           name="username"
           placeholder="Enter your username"
+          [required]="true"
+          [disabled]="isLoading()"
+        />
+
+        <!-- Email Input  -->
+        <app-input
+          label="Email"
+          [value]="email()"
+          (onTouched)="emailTouched.set(true)"
+          (valueChange)="email.set($event)"
+          type="email"
+          [error]="emailError()"
+          name="email"
+          placeholder="Enter your email"
           [required]="true"
           [disabled]="isLoading()"
         />
@@ -53,6 +69,10 @@
           [disabled]="isLoading()"
         />
 
+        @if (formError()) {
+          <p class="text-pop text-center -my-4 text-sm">{{ formError() }}</p>
+        }
+
         <!-- Submit Button -->
         <app-button type="submit" width="full" [disabled]="!isValid()">
           @if (isLoading()) {
@@ -79,10 +99,14 @@
       </form>
 
       <!-- Sign Up Link -->
-      <div class=" text-center">
-        <p class="text-sm text-secondary flex items-center justify-center ">
+      <div class="text-center">
+        <p class="text-sm text-foreground/80 flex items-center justify-center">
           Already have an account?
-          <app-button variant="link" routerLink="/login" extraClasses="text-secondary! hover:text-secondary-foreground! underline">
+          <app-button
+            variant="link"
+            routerLink="/login"
+            extraClasses="text-primary! hover:text-secondary-foreground! underline"
+          >
             Sign in
           </app-button>
         </p>

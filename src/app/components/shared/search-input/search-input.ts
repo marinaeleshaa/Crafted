@@ -1,11 +1,11 @@
-import { Component, HostListener, signal } from '@angular/core';
+import { Component, HostListener, output, signal } from '@angular/core';
 import { LucideAngularModule, Search, TextAlignJustify } from 'lucide-angular';
 import { Dropdown } from '../../ui/dropdown/dropdown';
 import { SearchInputOverlay } from "../search-input-overlay/search-input-overlay";
 
 @Component({
   selector: 'app-search-input',
-  imports: [LucideAngularModule, Dropdown, SearchInputOverlay],
+  imports: [LucideAngularModule, Dropdown],
   templateUrl: './search-input.html',
   styleUrl: './search-input.css',
 })
@@ -14,6 +14,7 @@ export class SearchInput {
   readonly icon = TextAlignJustify;
   readonly searchIcon = Search;
   isOverlayOpen = signal(false);
+  OpenOverlayEvent = output();
 
   @HostListener('document:click', ['$event'])
   onDocumentClick(event: MouseEvent) {
@@ -31,7 +32,8 @@ export class SearchInput {
   }
 
   toggleOverlay() {
-    this.isOverlayOpen.update((open) => !open);
+    // this.isOverlayOpen.update((open) => !open);
+    this.OpenOverlayEvent.emit();
   }
 
   closeDropdown() {
