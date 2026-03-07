@@ -9,12 +9,13 @@
   content: '';
   position: absolute;
   background: var(--secondary);
-  width: 60px; /* w-15 */
-  height: 60px; /* h-15 */
+  width: 70px; /* w-15 */
+  height: 70px; /* h-15 */
   bottom: 76px; /* bottom-19 */
-  right: 0;
+  right: 0px;
   z-index: 12;
   border-radius: 9999px;
+  border-top-right-radius: 0;
   box-shadow: 35px 25px 0 var(--background);
 }
 
@@ -28,6 +29,7 @@
   bottom: 0;
   right: 72px; /* right-18 */
   z-index: 12;
-  border-radius: 9999px;
-  box-shadow: 35px 25px 0 var(--background);
+  border-bottom-right-radius: 9999px;
+  border-top-right-radius: 8000px;
+  box-shadow: 25px 25px 0 var(--background);
 }
